@@ -121,12 +121,34 @@
             přiklad, nefunguje statistika a je tam až přiliš zbytečností
             
     \section{Technologie}
-        základní údaje, php protoze servery na učl
+        Mezi první otázky projektu patřilo, v jaké technologii se bude psát. Po domluvě s pracovníky UČL AV jsem měl vytvořit webovou aplikaci, která je technologicky podobná té stávající. Aplikace měla mít přívětivé uživatelské rozhraní pro snadnou a rychlou správu elektronických děl neměla obsahovat zásadná chyby jako dřívější aplikace. 
+        
+        Další duležitou otázkou bylo, ve kterém elektronickém formátu se budou díla tvořit a uchovávat. Existuje celá řada formátů, proto bylo pro budoucí možné rozšíření duležité domluvit se s pracovníky na správném formátu.
+        
         \subsection{Jazyk}
-            v jakém jazyce, proč jsem se rozhodl psát
+            U jednoduchých webových aplikací postačí, když klientská strana pošle požadavek na serverovou část, ta jej vyhodnotí a pošle odpověď zpět. Pro implementaci tohoto případu se nejčastěji používá architektura client/server \cite{languages}. 
+            
+            Jedna z výhod pro tuto architekturu je, že klientská strana programu je oddělena od serverové části. Výpočty jsou prováděny na straně serveru, proto nejsou požadovány vysoké nároky na výpočetní techniku počítače, na kterém běží klientská část. Probíhá zde věrší ochrana duležitých dat, protože všechny jsou uchovávány na serverové části.
+            
+            Nevýhodou může být vysoká cena zařízení pro provoz nebo pro správu serveru je potřeba systémového administrátora.\\
+            Srovnání jazyků pro webové aplikace:
+            
+            \begin{itemize}
+                \item PHP – jeden z nejrozšířenějsích jazyků, který podporoje většina poskytovatelů webhostingu. Tento jazyk je široce využíván mezi uživateli a obsahuje spostu standardních knihovních funkcí. Hodí se pro malé nebo středně velké projekty.
+                \item Ruby – navzdory tomu, že Ruby je mladý jazyk, těší se velké oblíbenosti mezi webovými vývojáři. Nejznámější framework Ruby on Rails umožňuje rychle vytvářet vzorové nebo malé projekty, avšak neprochází všemi časovými testy, a proto velmi pravděpodobně obsahuje zásadní chyby. Pro nové uživatele je z důvodu daných pravidel Ruby on Rails složitý na implementaci nezbytných funckí.
+                \item Perl – momentálně vývoj jazyku probíhá velice pomalu, jeho použití ve větších webových projektech je spíše vzácností.
+                \item Python – díky nástupu velkých frameworků - například Django, je možné použit Python ve velkých webových projektech. Syntaxe kódu je podobná Ruby, ale hlavní rozdíl činí ideologie psaní kódu. Nicméně narozdíl od Ruby se Python rozvíjí rychleji.
+                \item C\# ASP.NET – pro správné fungování jazyka je třeba zařídit ISS server, který je nezbytný pro mnoho komerčních projektů od firmy Microsoft. Jiným řešením může být použítí serveru Mono, který ale není stabilní a může obsahovat mnoho chyb.
+                \item JAVA – tento široce využívaný jazyk lze aplikovat na velké či korporační projekty. Je poměrně rychlý a obsahuje spoustu již vyřešených složitých problémů, které nemusí uživatel znovu řešit. Pro začátek je vyžadováno poměrné velké množství znalostí, aby fungovala základní kostra programu, což se považuje za významnou nevýhodu.
+            \end{itemize}
+            
+            Pro tento projekt postačí menší a jednoduší aplikace, kterou zaměstnanci UČL AV snadno nahrají na jejich servery, a proto byl na základě této analýzy vybrán jazyk PHP.
+            
+        \subsection{Databáze}
+            jakou databázi, proč
         \subsection{Elektronický formát}
             jaký elektronický formát použiji pro uchování děl
     \section{Software}
-        jaký framework jsem vybral
+        jaký framework jsem vybral, twig
     \section{Grafické nástroje}
         podle jakých nástrojů jsem dělal grafické návrhy
