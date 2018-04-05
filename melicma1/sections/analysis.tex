@@ -112,13 +112,13 @@
                 \end{itemize}
                 
     \section{Stávající aplikace}
-        kdo ji vytvořil, kdy. v čem běží
+        V současné době mají pracovníci UČL AV k dispozici aplikaci, která byla vyvinuta již v roce 2006. Serverová část (back-end) aplikace běží v node.
         
         \subsection{Aktuální stav}
-            par let už není udržovaná, popsat její grafický vzhled
-            
+        Tato aplikace je na první pohled podstatně zastaralá, a to jak v uživatelském rozhraní, tak i ve funkční části programu. To je způsobeno zastavením veškerého vývoje a podpory již před několika lety.
+
         \subsection{Nedostatky}
-            přiklad, nefunguje statistika a je tam až přiliš zbytečností
+            Uživatelé pracující s aplikací si často stěžují například na rychlost běhu nebo na nemožnost přidávat chybějící části díla.
             
     \section{Technologie}
         Mezi první otázky projektu patřilo, v jaké technologii se bude psát. Po domluvě s pracovníky UČL AV jsem měl vytvořit webovou aplikaci, která je technologicky podobná té stávající. Aplikace měla mít přívětivé uživatelské rozhraní pro snadnou a rychlou správu elektronických děl neměla obsahovat zásadná chyby jako dřívější aplikace. 
@@ -145,9 +145,37 @@
             Pro tento projekt postačí menší a jednoduší aplikace, kterou zaměstnanci UČL AV snadno nahrají na jejich servery, a proto byl na základě této analýzy vybrán jazyk PHP.
             
         \subsection{Databáze}
-            jakou databázi, proč
+            Srovnání několika open-source databázových řešení podle \cite{database}\\
+            \begin{itemize}
+                \item CUBRID\footnote{domovská stránka: \url{https://www.cubrid.org/}} – byl navržen a optimalizován pro webové aplikace. Hodí se pro práci s velkými daty, nebo při nutnosti použití více dotazů najednou. Výhodou je možnost online zálohy a grafické rozhraní pro jazyky PHP, Python, Perl a Ruby. N druhou stranu manuál existuje pouze v angličtině nebo korejštině. Spoustu příspěvku na forum jsou řadu let stará.
+                \item Firebird\footnote{domovská stránka: \url{http://www.firebirdsql.org/en/start/}} – je prvním zástupcem relační databáze. Systém fungujícá již od roku 1981, který lze použít na Linux, Windows a další Unixové platformy. Firebird má obsáhlou komunitu, uživatel může využít spoustu vývojářských nástrojů a obsahuje autentizaci skrz Windows účet. Naopak chybí dočasné tabulky a integrace mezi ostatnímy databázovými systémy.
+                \item MariaDB\footnote{domovská stránka: \url{https://mariadb.org/}} – byla vytvořena původnímy vývojáři MySQL. MariaDB využívají dnes největší společnosti jako jsou Google nebo Facebook. Proto je ochrana dat na špičkové úrovni. Díky působení na trhu již přes 20 let patří mezi nejvýkonější systémy. Jako nevýhoda se dá počítat chybějící plugin password complexity.
+                \item MongoDB\footnote{domovská stránka: \url{https://www.mongodb.com/}} – byl vytvořen v roce 2007 jako řešení pro větší projekty. Díky svým sponzorům a podporovatelům si uchovává myšlenku být jednoduchý a přirozený. Dokáže zpracovat poměrně rychle velké množství dat a po hlavní závadě nastupuje rychlé obnovení.
+                \item MySQL\footnote{domovská stránka: \url{https://www.mysql.com/}} – funguje již od roku 1995. Dnes je využívána jako standardní databáze pro menší i větší projekty. Běží na všech známých operačních systémech a lze použit, ikdyž není funkční síť. Velkou výhodou nabízí oddělený server od vývojového prostředí. Trochu uvadá komunita a nové aktualizace přichází čám dál tím později. 
+                \item PostgreSQL\footnote{domovská stránka: \url{https://www.postgresql.org/}} – má za sebou 15 let aktivního vývoje a patří mezi systémy, které běží na všech hlavních operačních systémech. S použitím PostgreSQL může uživatel vytvořit vlastní metody nebo nestandardní datové typy. Mnoho věstavěných procedur lze spouštět skrze mnoho programovacích jazyků, jako je Java, Perl, Python nebo C/C++. Nastává problém při vysokém počtu transakcí a vývoj je řízen pouze komunitou.
+                \item SQLite\footnote{domovská stránka: \url{https://www.sqlite.org/index.html}} – se sama považuje za nejrozvinutější datavázi na světě. Vývoj začal v roce 2000 a použivali jej významné firmy jako je Facebook, Apple nebo Microsoft. Před každém release musí být kód pečlivě zkontrolován, aby se předešlo případným chybám. Poté vývojáři zveřejní přesný výčet změn. K dispozivi je kvalitní podpora a knihovna, která pracuje rychle na úkor velikosti paměti. SQLite se nedoporučuje pro obsáhlé webové aplikace a velké množství dat.
+        \end{itemize}
+        
+        Na základě zjištění a protože tento projekt bude patřit spíše k těm menším, byla vybrána databáze SQLite.
+        
         \subsection{Elektronický formát}
-            jaký elektronický formát použiji pro uchování děl
+            \uv{\textit{Mezi formáty, v nichž můžeme číst elektronickou literaturu, jsou jednak ty, které byly pro tento účel přímo vytvořené, ale také ty, v nichž se e-knihy publikovaly prostě proto, že nebylo mnoho jiných alternativ. Toto se týká zejména stavu v 90. letech, kdy vznikaly kopie (převážně papírových) knih převedené do formátů jako jsou TXT, HTML či RTF.}}\cite{electronic-format}
+            
+            Elektronickému formátu je třeba věnovat zvláštní pozornost, protože se do buducna počítá s rozšířením aplikace o část, která se bude věnovat zobrazením těchto děl.
+            
+            Seznam vybraných formátů pro e-knihy uvedené v \cite{electronic-format}
+            
+            \begin{itemize}
+                \item Archos Diffusion – je formát vytvořen franouzskou firmou  ArchosDiffusion. Koncovka názvů souborů je .aeh. Formát byl vytvořen pro uchovávání elektronický děl a patří do skupiny formátů založených na XML. Otevírat soubory lze v programu Archos Player nebo ve volně dostupné aplikaci Visual Vision EbooksReader. Postupem času uvadá zájem o tento formát.
+                \item AZW
+                \item EPUB
+                \item Text Encoding Initiative
+                \item Hypertext Markup Language
+                \item Portable Document Format
+                \item Plain text
+            \end{itemize}
+            
+            Drtivá většina děl dostupná pracovníkům UČL AV je právě ve formátu xml, avšak tento formát není primárně určen pro uchovávání elektronických verzí literárních děl, proto byl vybrán mou práci textový formát TEI (Text Encoding Initiative).
     \section{Software}
         jaký framework jsem vybral, twig
     \section{Grafické nástroje}
