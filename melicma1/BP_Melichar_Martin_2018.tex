@@ -15,7 +15,7 @@
 % \usepackage{amssymb} %additional math symbols
 
 \usepackage{dirtree} %directory tree visualisation
-
+\usepackage{float}
 % % list of acronyms
 % \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
 % \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
@@ -91,6 +91,19 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
 
 \appendix
 
+\chapter{Wireframy}
+
+    \begin {figure}[H]\centering
+        \includegraphics[width=0.991\textwidth]{images/main}
+        \caption {Hlavní stránka}
+        \label {fig:main}
+    \end{figure}
+
+    \begin {figure}[H]\centering
+        \includegraphics[width=\textwidth]{images/metadata}
+        \caption {Metadata}
+        \label {fig:metadata}
+    \end{figure}
 \chapter{Seznam použitých zkratek}
 % \printglossaries
 \begin{description}
