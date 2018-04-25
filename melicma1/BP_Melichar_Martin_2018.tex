@@ -56,19 +56,24 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
 \begin{introduction}
 	%sem napište úvod Vaší práce
 
-    Elektronická literární díla stále rozšiřují pole své působnosti, ať mluvíme o zakoupení nebo zobrazení knih na počítači či o snadném čtení knih v e-čtečkách. O papírové knihy jako takové pomalu přestáváme jevit zájem. Zobrazení a následné čtení e-knih na našich elektronických zařízení je nejenom snazší, ale i pohodlnější než zapůjčování či koupě papírových knih.
+    Elektronická literární díla stále rozšiřují pole své působnosti, ať mluvíme o nakupování nebo zobrazování knih na počítači či o jejich snadném čtení v e-čtečkách. V Austrálii se rozdíl prodeje elektronických knížek v roce 2008 oproti roku 2009 rapidně zvýšil, a to o více než 100 \%. Ve Spojených státech amerických se v lednu roku 2012 zvýšil prodej e-knih pro dospělé o 49,4 \% a e-knih pro děti a mládež o 475,1 \%, než tomu bylo v lednu 2011 \cite{info}. Zde vidíme prudký nárůst prodeje e-knih, z toho můžeme usoudit, že rapidně roste oblíbenost elektronických děl. Zobrazení a následné čtení e-knih na našich elektronických zařízení je nejenom snazší, ale i pohodlnější oproti zapůjčování či koupi papírových knih.
 
-	Výsledek mé práce je přednostně určen pro zaměstnance UČL AV. Pracovníci ústavu získávají, ať formou darů či koupí, postupně více literárních děl. Tato díla následně naskenují a nahrají do elektronické podoby. Nicméně často to bývají historická díla, a proto se stává, že naskenovaný výsledek přesně neodpovídá tištěné podobě knihy. Proto je nezbytné, aby pracovníci ručně opravovali chyby a měli možnost doplňovat chybějící části v elektronické podobě díla. Zde přichází na řadu moje aplikace, která bude umožňovat rychlejší a efektivnější úpravu nově vzniklého díla.
+	Výsledek této práce je přednostně určen pro zaměstnance Ústavu české literatury Akademie věd České republiky (UČL AV). Pracovníci ústavu získávají, ať formou darů či koupí, postupně více literárních děl. Tato díla následně naskenují a převedou do elektronické podoby. Nicméně často to bývají historická díla, a proto se stává, že naskenovaný výsledek přesně neodpovídá tištěné podobě knihy. Proto je nezbytné, aby pracovníci ústavu ručně opravovali chyby a měli možnost doplňovat chybějící části v elektronické podobě díla. Zde přichází na řadu aplikace, která bude umožňovat rychlejší a efektivnější úpravu nově vzniklého díla.
 
 	Na základě poznámek a připomínek zaměstnanců bude tato aplikace mnohem efektivnější než stávající. Toto téma jsem si zvolil, protože je velmi aktuální a výsledek by mohl výrazně ulehčit práci při vytváření literárních elektronických děl.
 
-\end{introduction}
-
-\chapter{Cíl práce}
-    Cílem rešerše je prostudování existujících aplikací pro tvorbu a správu literárních děl na trhu. Dále porovnání a výběr nejvhodnějšího frameworku pro tvorbu aplikace. S tím úzce souvisí výběr samotného jazyka pro implementaci. Poté přijde na řadu nalezení, porovnání a zvolení nejvhodnější textového formátu pro e-knihy. Dalším krokem je shromáždění poznámek a připomínek od uživatelů současně užívané aplikace pro správu elektronických děl.
+    \section{Cíl práce}
     
-    Cílem praktické části práce je navrhnout a implementovat redakční systém pro správu a snadné vytváření elektronických verzí literárních děl, otestovat systém na reálných datech a řádně jej zdokumentovat. Systém bude umožňovat správu nejen samotných dokumentů, ale i souborů k nim přidruženým, zejména pak fotografií či obrázků. Ve výsledné aplikaci bude implementován jednoduchý filtr a snadné vyhledávání v seznamu sbírek. Aplikace bude umožňovat autentifikaci a bude zároveň poskytovat správu uživatelů a jejich rolí. V aplikaci bude administrátorovi umožněna registrace nového uživatele, který si následně upraví heslo podle své potřeby.
+        Prvním cílem je rešerše existujících aplikací pro tvorbu a správu literárních děl a dále porovnání a výběr nejvhodnějšího frameworku pro tvorbu aplikace. S tím úzce souvisí výběr samotného jazyka pro implementaci. Poté přijde na řadu  porovnání a volba nejvhodnějšího textového formátu pro e-knihy. Dalším krokem je shromáždění poznámek a připomínek od uživatelů současně užívané aplikace pro správu elektronických děl.
+    
+        Cílem praktické části práce je navrhnout a implementovat redakční systém pro správu a snadné vytváření elektronických verzí literárních děl, otestovat systém na reálných datech a uživatelích a řádně jej zdokumentovat. Systém bude umožňovat správu nejen samotných dokumentů, ale i souborů k nim přidruženým, zejména fotografií a obrázků. Ve výsledné aplikaci bude implementován jednoduchý filtr a snadné vyhledávání v seznamu sbírek. Aplikace bude umožňovat autentifikaci a bude zároveň poskytovat správu uživatelů a jejich rolí. V aplikaci bude administrátorovi umožněna registrace nového uživatele, který si následně upraví heslo podle své potřeby.
+        
+    \section{Úvod do problematiky}
 
+        V současnosti mají pracovníci UČL AV okolo 1700 literárních děl uložených v databázi ve formátu XML. Díla jsou rozdělena do dvou částí, jak je vidět na příkladu Vytržené listy \ref{fig:xml}. První část je identifikována tagem hlavička a druhá tagem text. Hlavička obsahuje metadata jako je titul díla nebo rok vydání a ve druhé části je samotný text rozčleněn do tagů sbírka a báseň.
+        Dále připravují další díla, která budou potřebovat drobné úpravy před publikováním. 
+        
+\end{introduction}
 
 \include{sections/analysis}    
 
@@ -91,7 +96,19 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
 
 \appendix
 
-\chapter{Wireframy}
+\chapter{Screenshoty}
+
+    \begin {figure}[H]\centering
+        \includegraphics[width=\textwidth]{images/login}
+        \caption {Přihlašování}
+        \label {fig:login}
+    \end{figure}
+
+    \begin {figure}[H]\centering
+        \includegraphics[width=\textwidth]{images/xml}
+        \caption {Ukázka podoby díla}
+        \label {fig:xml}
+    \end{figure}   
 
     \begin {figure}[H]\centering
         \includegraphics[width=0.991\textwidth]{images/main}
@@ -115,6 +132,12 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
         \includegraphics[width=\textwidth]{images/authPub}
         \caption {Seznam autorů a vydavatelů}
         \label {fig:authPub}
+    \end{figure}
+    
+    \begin {figure}[H]\centering
+        \includegraphics[width=\textwidth]{images/text}
+        \caption {Text díla}
+        \label {fig:text}
     \end{figure}
     
 \chapter{Seznam použitých zkratek}

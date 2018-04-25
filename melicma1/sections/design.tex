@@ -1,19 +1,13 @@
 \chapter{Návrh aplikace}
-    Návrh aplikace je velice důležitou součástí projektu pro sjednocení požadavků zadavatelů a reálného provedení. Vytvořením dobrého návrhu se zamezí případným kolizím a zároveň proběhne první interakce mezi zákazníkem a dodavatelem. Pro vzhled aplikace byl ze strany UČL AV vznesen požadavek, aby aplikace byla snadno ovladatelná a měla moderní vzhled. Databázové schéma bylo čistě na našem rozhodnutí a na šifrování uživatelských hesel nebyly vzneseny taktéž žádné požadavky.
+    Návrh aplikace je velice důležitou fází projektu, ve které by mělo dojít ke sjednocení požadavků zadavatelů a reálného provedení. Vytvořením dobrého návrhu se zamezí případným kolizím a zároveň proběhne první interakce mezi zákazníkem a dodavatelem. Ze strany UČL byl vznesen požadavek, aby aplikace byla snadno ovladatelná a měla moderní vzhled. Databázové schéma bylo čistě na našem rozhodnutí.
     
     \section{Wireframy}
         Jednou z nejdůležitějších sekcí bylo navrhnout, jak budou jednotlivé stránky vypadat a kolik jich aplikace bude obsahovat. Základní rozložení stránek bylo na mém rozhodnutí, nicméně musel jsem dodržet požadavky UČL AV. Design měl být jednoduchý, uživatelsky přívětivý a moderní. Tyto návrhy musely být a byly schváleny pracovníky UČL AV.
         
-        Grafika měla být jednoduchá, bez složitých a obsáhlých prvků, proto jsem se rozhodl použít webovou aplikaci Moqups\footnote{domovská stránka: \url{https://moqups.com/}}. Její bezplatná verze nabízí obrovské množství šablon pro grafické návrhy. Od základních prvků jako je tlačítko nebo nadpis, po mírně složitější formuláře nebo dropdowny. Pro snadnější a moderní stylování aplikace jsem chtěl použít Bootstrap, a proto je velikou výhodou, že Moqups má bootstrapovské prvky v nabídce. 
+        Grafika měla být jednoduchá, bez složitých a obsáhlých prvků. Pro návrh GUI jsem se rozhodl použít webovou aplikaci Moqups\footnote{domovská stránka: \url{https://moqups.com/}}. Její bezplatná verze nabízí obrovské množství šablon pro grafické návrhy. Od základních prvků jako je tlačítko nebo nadpis, po mírně složitější formuláře. Pro snadnější a moderní stylování aplikace jsem chtěl použít Bootstrap, a proto je velikou výhodou, že Moqups má bootstrapovské prvky v nabídce. 
         
         \subsection{Login}
-            Pro úvodní přihlašovací stránku jsem vybral jednoduchý formulář, ve kterém je email a heslo viz obrázek \ref{fig:login}. Aby byla zachována jednoduchost není nutné přidávat další prvky. Pozadí, které by se dalo v budoucím rozšíření měnit, je jako na všech ostatních stránkách bílé.
-            
-            \begin {figure}[H]\centering
-                \includegraphics[width=\textwidth]{images/login}
-                \caption {Přihlašování}
-                \label {fig:login}
-            \end{figure}
+            Pro úvodní přihlašovací stránku jsem vybral jednoduchý formulář, ve kterém je email a heslo, viz obrázek \ref{fig:login}. Pozadí, které by se dalo v budoucím rozšíření měnit, je jako na všech ostatních stránkách bílé.
             
         \subsection{Hlavní stránka}
             Po úspěšném přihlášení do aplikace se zobrazí hlavní stránka, která je rozdělena do tří částí, jak je vidět na obrázku \ref{fig:main}. V hlavičce se nachází společně s nadpisem odkaz na seznam autorů a vydavatelů děl a dropwdown s možnostmi uživatele. Dále je zde filtr aplikovatelný na zobrazená díla. Zadání vyžadovalo vyhledat elektronickou literaturu podle autora, roku vydání, textu obsaženého v díle a statusu. Třetí část obsahuje samotný seznam děl. Tento seznam je ve tvaru tabulky se sloupci název díla, autor, rok vydání, status, odkaz na přílohy a nezbytné akce a navíc se dá tabulka seřadit podle sloupců. U seznamu děl lze nastavit počet zobrazených děl a obsahuje rychlý vyhledávač textu.
