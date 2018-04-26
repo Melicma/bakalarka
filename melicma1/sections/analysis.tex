@@ -33,7 +33,7 @@
                 \end{itemize}
                 
         \subsection{Editix} 
-            Editix\footnote{domovská stránka: \url{http://www.editix.com/index.html/}} je produktem francouzské společnosti JAPISoft SARL. Editor vytvořil Alexandre Brillant. Systém je velice přehledný a intuitivní. Na trhu je systém od roku 2004 a nejnovější verze je EditiX XML Editor 2017 v15. Zákaznící, kteří využívají tento software jsou převážně vzdělávací instituty od University of Oxford po University of Arizona.
+            Editix\footnote{domovská stránka: \url{http://www.editix.com/index.html/}} je produktem francouzské společnosti JAPISoft SARL. Editor vytvořil Alexandre Brillant. Systém je velice přehledný a intuitivní. Na trhu je systém od roku 2004 a nejnovější verze je EditiX XML Editor 2017 v15. Zákazníci, kteří využívají tento software jsou převážně vzdělávací instituty od University of Oxford po University of Arizona.
             
             \subsubsection{výhody}
                 \begin{itemize}
@@ -93,15 +93,15 @@
                 \end{itemize}
 
         \subsection{Exchanger XML Editor}
-            Exchanger XML Editor\footnote{domovská stránka: \url{http://www.exchangerxml.com/editor/}} je určen pro snadnou editaci, prohlížení, správu a konverzi XML souborů. Exchanger pomáhá svojí širokou nabídkou funkcí XML autorům a vývojářům.  Software je prouktem firmy Cladonia, která se zaměřuje na vývoj XML aplikací. 
+            Exchanger XML Editor\footnote{domovská stránka: \url{http://www.exchangerxml.com/editor/}} je určen pro snadnou editaci, prohlížení, správu a konverzi XML souborů. Exchanger pomáhá svojí širokou nabídkou funkcí XML autorům a vývojářům.  Software je produktem firmy Cladonia, která se zaměřuje na vývoj XML aplikací. 
             
             \subsubsection{výhody}
                 \begin{itemize}
                     \item nabízí plnou verzi na 30 dní,
                     \item aplikace je dotupná na všech platformách,
                     \item možnost zobrazení základního náhledu,
-                    \item poskytuje podporu pro Text Encoding Initiative (TEI) formou stáhnutí balíčku,
-                    \item automatická kotrola, jestli je soubor validní.
+                    \item poskytuje podporu pro XML formou stáhnutí balíčku,
+                    \item automatická kontrola, jestli je soubor validní.
                 \end{itemize}
                 
             \subsubsection{nevýhody}
@@ -112,8 +112,8 @@
                     \item poslední update proběhl v roce 2010.
                 \end{itemize}
         \subsection{Vyhodnocení}
-            doplnit vyhodnocení, proč je nepoužívat
-        
+
+             Z potenciálních konkurentů můžeme vyškrtnout Emeditor, protože je placený. Existuje neplacená verze Emeditoru, ale zároveň v ní chybí například možnost vložení tagu před a za označený text. Aplikace Editix je také zpoplatněna. Velkou nevýhodou je placení každého dalšího updatu editoru zvlášť. EditPad Pro je také placený a ve volně dostupné verzi není možnost vyhledávání v souborech. Navíc explicitně nepodporuje XML. Z názvu editoru Essential XML Editor lze odvodit, že je určený pro XML, ale ihned po spuštění aplikace je zřejmá dlouhodobá neaktualizace designu. Podobný problém s designem má Exchanger XML Editor, u kterého navíc poslední update softwaru proběhl v roce 2010.
         
     % \section{Stávající aplikace}
     %     V současné době mají pracovníci UČL AV k dispozici aplikaci, která byla vyvinuta již v roce 2006. Serverová část (back-end) aplikace běží v node.
@@ -125,14 +125,13 @@
     %         Uživatelé pracující s aplikací si často stěžují například na rychlost běhu nebo na nemožnost přidávat chybějící části díla.
             
     \section{Technologie}
-        Mezi první otázky patřilo, v jaké technologii se bude aplikace psát. Po domluvě s pracovníky UČL AV jsem měl vytvořit webovou aplikaci, která je technologicky podobná té stávající. Aplikace měla mít přívětivé uživatelské rozhraní pro snadnou a rychlou správu elektronických děl.
+        Mezi první otázky patřilo, v jaké technologii se bude aplikace psát. Po domluvě s pracovníky UČL AV jsem měl vytvořit webovou aplikaci, která má mít přívětivé uživatelské rozhraní pro snadnou a rychlou správu elektronických děl.
         
         Další duležitou otázkou bylo, ve kterém elektronickém formátu se budou díla tvořit a uchovávat. Existuje celá řada formátů, proto bylo pro budoucí možné rozšíření duležité domluvit se s pracovníky na správném formátu.
         
         \subsection{Jazyk}
             U jednoduchých webových aplikací postačí, když klientská strana pošle požadavek na serverovou část, ta jej vyhodnotí a pošle odpověď zpět. Pro implementaci tohoto případu se nejčastěji používá architektura client/server \cite{languages}. 
-
-            Jedna z výhod této architektury je, že klientská strana programu je oddělena od serverové části. Výpočty jsou prováděny na straně serveru, proto nejsou požadovány vysoké nároky na výpočetní techniku počítače, na kterém běží klientská část. Tato architektura také chrání data jejich uložením na server, což je jedna z nejlepších metod jejich ochrany.
+            Jedna z výhod této architektury je, že klientská strana programu je oddělena od serverové části. Výpočty jsou prováděny na straně serveru, proto nejsou požadovány vysoké nároky na výpočetní techniku počítače, na kterém běží klientská část. Tato architektura také chrání data jejich uložením na server, což je jedna z nejlepších metod ochrany.
             
             Nevýhodou může být vysoká cena zařízení pro provoz případně je nutné mít pro správu serveru systémového administrátora.\\
             Srovnání jazyků a informace pro webové aplikace uvedené na \cite{languages}:
@@ -140,7 +139,7 @@
             \begin{itemize}
                 \item PHP – jeden z nejrozšířenějsích jazyků, který podporoje většina poskytovatelů webhostingu. Tento jazyk je široce využíván mezi uživateli a obsahuje mnoho standardních knihovních funkcí. Hodí se pro malé nebo středně velké projekty.
                 
-                \item Ruby – navzdory tomu, že Ruby je mladý jazyk, těší se velké oblíbenosti mezi webovými vývojáři. Nejznámější framework Ruby on Rails umožňuje rychle vytvářet vzorové nebo malé projekty. Pro nové uživatele je z důvodu daných pravidel Ruby on Rails složitý na implementaci nezbytných funkcí.
+                \item Ruby – navzdory tomu, že Ruby je mladý jazyk, těší se velké oblíbenosti mezi webovými vývojáři. Nejznámější framework Ruby on Rails umožňuje rychle vytvářet vzorové nebo malé projekty. Pro nové uživatele je z důvodu daných pravidel Ruby on Rails poměrně složitý. Neznalý uživatel bude mít na začátku problém i s implementací jednoduchých funkcí.
                 
                 \item Python – díky nástupu velkých frameworků - například Django, je možné použit Python ve velkých webových projektech. Syntaxe kódu je podobná Ruby, ale hlavní rozdíl činí ideologie psaní kódu. Nicméně narozdíl od Ruby se Python rozvíjí rychleji.
                 
@@ -148,8 +147,8 @@
                 
                 \item JAVA – tento široce využívaný jazyk lze aplikovat na velké či korporační projekty. Je poměrně rychlý a obsahuje spoustu již vyřešených složitých problémů, které nemusí uživatel znovu řešit. Pro začátek je vyžadováno poměrné velké množství znalostí, aby fungovala základní kostra programu, což se považuje za významnou nevýhodu.
             \end{itemize}
-            
-            Pro tento projekt postačí menší a jednoduší aplikace, kterou zaměstnanci UČL AV snadno zprovozní servery, a proto byl na základě této analýzy vybrán jazyk PHP.
+
+            Pro tento projekt postačí menší a jednodušší aplikace, kterou zaměstnanci UČL AV snadno zprovozní na svých serverech. Pracovníci nemají k dispozici server ISS, proto vypadává z výběru C\# ASP.NET. S Ruby nemám žádné zkušenosti a Python jsem dříve používal jen okrajově. PHP i JAVA jsou velice rozšířené jazyky ve webovém inženýrství, nicméně k PHP mám kladnější vztah. Znalosti PHP jsem využil hned v několika předmětech při studiu. Na základě této analýzy byl vybrán jazyk PHP.
             
         \subsection{Databáze}
             Srovnání několika open-source databázových řešení podle \cite{database}\\
@@ -186,13 +185,13 @@
                 
                 \item EPUB – patří mezi nejpopulárnější formáty na světe i v České republice. Vytvořilo jej sdružení International Digital Publishing Forum a je založený na XML. Knihy ve formátu EPUB lze číst na většině čtecích zařízeních s výjimkou čteček Kindle, nicméně existuje možnost převodu formátu EPUB do jiného, který dokáží číst i čtečky Kindle. Tento otevřený formát podporuje Digital rights management (DRM) ochranu a proto si získal oblibu i u nakladatelů.
                 
-                \item Hypertext Markup Language (HTML) – se primárně používá pro tvorbu webocýh stránek. V 90. letech, kdy se začaly poprvé vytvářet elektroncké podoby knih, nebyl ještě vyvinut žádný formát pro jejich zobrazení, a proto se z nutnosti používal také HTML. Převod probíhal nejprve naskenováním díla a poté nahráním do aplikace Optical Character Recognition (OCR). Výstupem aplikace bylo dílo ve formátu HTML. Ke čtení postačil webový prohlížeč. Nicméně s nástupem formátů navržených pro elektronické knihy se přestal HTML používat.
+                \item Hypertext Markup Language (HTML) – se primárně používá pro tvorbu webovýh stránek. V 90. letech, kdy se začaly poprvé vytvářet elektronické podoby knih, nebyl ještě vyvinut žádný formát pro jejich zobrazení, a proto se z nutnosti používal také HTML. Převod probíhal nejprve naskenováním díla a poté nahráním do aplikace Optical Character Recognition (OCR). Výstupem aplikace bylo dílo ve formátu HTML. Ke čtení postačil webový prohlížeč. Nicméně s nástupem formátů navržených pro elektronické knihy se přestal HTML používat.
                 
-                \item Portable Document Format – vyvinutý společností Adobe v roce 1993 byl primárně určen pro uchování souborů pro tisk. Patří mezi formáty, které nebyly vytvořeny pro elektronickou literaturu, ale narozdíl od ostatních, se tak používá dodnes. Velkou předností je nezávislost na platformě, protože s PDF lze pracovat téměř na všech operačních systémech. 
+                \item Portable Document Format (PDF) – vyvinutý společností Adobe v roce 1993 byl primárně určen pro uchování souborů pro tisk. Patří mezi formáty, které nebyly vytvořeny pro elektronickou literaturu, ale narozdíl od ostatních, se tak používá dodnes. Velkou předností je nezávislost na platformě, protože s PDF lze pracovat téměř na všech operačních systémech. 
                 
                 \item Plain text – patří mezí formáty, které nebyly určeny pro uchovávání e-knih. V 90. letech se používal pro zobrazení elektronické literatury, protože nebylo tolik jiných možností. Díky malé datové velikosti souborů a možnosti čtení souborů neomezeně na platformě se stále používá. TXT nedovoluje formátování a nepodporuje vložení obrázků, videí či zvukových stop.
                 
-                \item Text Encoding Initiative – byl vytvořen TEI konsorciem primárně pro elektronickou literaturu. Formát je využíván ve výukových projektech i knihovnách po celém světě. Řadí se do skupiny formátů, které jsou založeny na XML. TEI se označuje jako nastavitelný, protože uživatel může podle své vůle přidat, předefinovat nebo přejmenovat tagy a jejich atributy. Formát se dá použít pro různé druhy textů.
+                \item Text Encoding Initiative (TEI) – byl vytvořen TEI konsorciem primárně pro elektronickou literaturu. Formát je využíván ve výukových projektech i knihovnách po celém světě. Řadí se do skupiny formátů, které jsou založeny na XML. TEI se označuje jako nastavitelný, protože uživatel může podle své vůle přidat, předefinovat nebo přejmenovat tagy a jejich atributy. Formát se dá použít pro různé druhy textů.
             \end{itemize}
             
             Drtivá většina děl dostupná pracovníkům UČL AV je právě ve formátu XML. Avšak tento formát není primárně určen pro uchovávání elektronických verzí literárních děl, proto byl pro mou práci po diskuzi s pracovníky UČL AV vybrán textový formát TEI.
@@ -217,7 +216,7 @@
                 
                 \item Wave\footnote{domovská stránka: \url{https://www.waveframework.com/}} – používá architekturu MVC. Neobsahuje doplňkové knihovny a klade důraz na rychlost a optimalizaci. Wave podporuje Apache i Nginx servery.
                 
-                \item Limonade\footnote{domovská stránka: \url{https://limonade-php.github.io/}} – se zaměřuje obdobně jako Wave na jednoduchost. VLimonade je velmi rychlý a snadný ve vývoji aplikací. Nicméně je až extrémně malý a nelze jej rozšířit o složitější funkčnost. Spoléhá pouze na globální funkce.
+                \item Limonade\footnote{domovská stránka: \url{https://limonade-php.github.io/}} – se zaměřuje obdobně jako Wave na jednoduchost. Limonade je velmi rychlý a snadný ve vývoji aplikací. Nicméně je až extrémně malý a nelze jej rozšířit o složitější funkčnost. Spoléhá pouze na globální funkce.
                 
                 \item Lumen\footnote{domovská stránka: \url{https://lumen.laravel.com/}} – je microframework odvozený z asi nejrozšířenějšího PHP frameworku Laravel. Pokud si programátor není jistý velikostí svého projektu, je výhodné použít Lumen, protože stačí veškerý kód z Lumenu převést do Laravelu a vše bude fungovat jak má.
             \end{itemize}
