@@ -16,7 +16,7 @@
             Po úspěšném přihlášení do aplikace se zobrazí hlavní stránka, která je rozdělena do tří částí, jak je vidět na obrázku \ref{fig:main}. V hlavičce se nachází společně s nadpisem odkaz na seznam autorů a vydavatelů děl a dropwdown s možnostmi uživatele. Dále je zde filtr aplikovatelný na zobrazená díla. Zadání vyžadovalo vyhledat elektronickou literaturu podle autora, roku vydání, textu obsaženého v díle a statusu. Třetí část obsahuje samotný seznam děl. Tento seznam je ve tvaru tabulky se sloupci název díla, autor, rok vydání, status, odkaz na přílohy a nezbytné akce a navíc se dá tabulka seřadit podle sloupců. U seznamu děl lze nastavit počet zobrazených děl a obsahuje rychlý vyhledávač textu.
 
         \subsection{Metadata}
-            Na obrázku \ref{fig:metadata} je vidět rozložení stránky pro úpravu metadat. Opět se skládá ze tří částí. První obsahuje navigaci, dropdown pro přihlášeného uživatele a nadpis. Druhá část je věnována autorům a vydavatelům. V tomto oddílu bude umožněno přidávat a odebírat autora nebo vydavatele. Poslední sekce obsahuje formulář pro úpravu metadat literárního díla. Společně s pracovníky UČL AV byly vybrány nejdůležitější atributy, které je zde možno upravit. 
+            Na obrázku \ref{fig:metadata} je vidět rozložení stránky pro úpravu základních údajů o dílu. Opět se skládá ze tří částí. První obsahuje navigaci, dropdown pro přihlášeného uživatele a nadpis. Druhá část je věnována autorům a vydavatelům. V tomto oddílu bude umožněno přidávat a odebírat autora nebo vydavatele. Poslední sekce obsahuje formulář pro úpravu metadat literárního díla. Společně s pracovníky UČL AV byly vybrány nejdůležitější atributy, které je zde možno upravit. 
         
         \subsection{Přílohy}
             Součástí zadání práce je správa příloh, zejména fotografií. Přílohám se věnuje právě tento segment. Obsahem wireframu \ref{fig:attachments} jsou naskenované jednotlivé stránky daného literárního díla. V horní části se opět objevuje navigace, uživatelské funkce a nadpis. Následuje sekce věnovaná hromadnému uploadu skenů do níže zobrazené fotogalerie.
@@ -36,5 +36,24 @@
     \section{Databázové schéma}
         Neméně duležitou součástí projektu byla databáze. Ze strany UČL AV nebyly vzneseny žádné požadavky na podobu databáze, proto se mohlo schéma přizpůsobit dle potřeby aplikace.
         
-    \section{Autentizace}
-        jak je zabezpečené heslo uživatele
+        Pro model databáze byla použita webová aplikace\footnote{domovská stránka: \url{https://www.quickdatabasediagrams.com/}}. Schéma je navrženo minimalisticky, ale tak aby zároveň pokrývalo veškeré potřeby aplikace. Výsledný návrh databáze \ref{fig:schema} obsahuje 5 tabulek s jednoduchými vazbami.
+        
+        \begin {figure}[H]\centering
+            \includegraphics[width=\textwidth]{images/schema}
+            \caption {Databázové schéma}
+            \label {fig:schema}
+        \end{figure}
+        
+        V tabulce uživatelů je uloženo UserID, UserEmail a heslo rozdělené do dvou sloupečků viz \ref{autentizace}. Uživatelské role jsou identifikovány pomocí sloupce Role.
+        
+        Duležitá tabulka je connection. Obsahuje reference na tabulky works a authors\_publishers. Třetím atributem je typ spojení. Tento typ určuje, jestli je spojením autor nebo vydavatel. Každý záznam v tabulce propojuje dílo a autora nebo vydavatele. Primárním klíčem je celá trojice, to znamená, že v tabulce se nemohou vyskytovat duplicity.
+        
+        ID, Name, LastName, Corporation a Author jsou atributy tabulky authors\_publishers. Záznamem může být reálná osoba, její pseudonym nebo společnost. V případě pseudonymu odkazuje záznam na reálnou osobu. Tuto referenci obsahuje sloupec Author, ve kterém je ID reálné osoby zaznamenané v authors\_publishers nebo je prázdný.
+        
+        Nejobsáhlejší tabulka se nazývá works. Obsahuje všechny základní informace o dílu: název díla (Title), podtitul (Subtitle), datum publikace (Year), místo vydání (Place), pořadí vydání (Edition), počet stran sbírky (Pages), věnování autora (Inscription), motto (Motto), autor motta (MottoAuthor), formát naskenovaného díla (Format), podpis (Signature), popis díla (Description) a poznámka k vydání (EditNote). Ve works je atribut Status, který indikuje momentální stav díla. Status může nabývat hodnot Nové, Rozpracováno, Zkontrolováno a Hotovo. Celý text včetně tagů je ve sloupci Content. Dále tabulka works obsahuje sloupec Fulltext, ve kterém je text díla bez tagů.
+        
+        Poslední tabulka attachments je pro přílohy přidružené k dílům. Obsahuje ID, referenci na dílo, Filename a poznámku k obrázku (Identifier).
+        
+    \section{Autentizace} \label{autentizace}
+        Součástí zadání je autentizace. Ze strany ústavu nebyl vznesem žádný požadavek na ochranu hesel, proto jsem si způsob šifrování mohl vybrat. Heslo je zašifrované pomocí sha256. Pro větší bezpečnost hesla jsem přidal metodou solení hesla tzn., že se k uživatelskému heslu přidává náhodný text.
+        
