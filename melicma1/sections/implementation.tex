@@ -1,14 +1,64 @@
 \chapter{Implementace}
+    Při vytváření kódu bylo nutné dodržovat domluvené návrhy. Kód musel být přehledný pro případné rozšířění aplikace jiným vývojářem. Díky vybranému softwaru a jeho přívětivé příručce byla poměrně rychle vytvořena aplikace v základní podobě. Slim má obrovskou komunitu uživatelů, což je velice nápomocné při hledání řešení problému. 
 
     \section{Import}
-        z čeho jsem importoval kam
-        \subsection{Staré díla}
-            v jakém formátu díla byla a do jakého jsem je dal
-        \subsection{Nově vzniklá díla}
-            příprava pro import jiního formátu
+        Ještě před implementací se musely do databáze aplikace zpracovat sbírky z UČL AV. Podle očekávání byla data dodána ve formátu XML. Import nedoprovázely žádné komplikace zejména díky snadné ovladatelnosti a standardním knihovnám scriptovacího jazyka Python\footnote{domovská stránka: \url{https://www.python.org//}}. Současně s importem sbírek proběhlo zpracování příloh k nim přidružených.
+        
+        \subsection{Stávající sbírka děl}
+            Stávající díla mají pracovníci z UČL AV v databázi. Část z této sbírky děl je ústavem již zpracována, na zbylé části se stále pracuje. Dříve byla tato díla upravována pomocí kancelářského balíčku Microsoft Word\footnote{domovská stránka: \url{https://products.office.com/cs-cz/word}}. Word je skvělý nástroj pro editaci jednotlivých souborů, nicméně nedovoluje spravovat soubory jako celek. V současné době pracovníci UČL AV čekají na novou aplikaci, protože jim chybí vhodný nástroj k úpravě děl.
+            
+            Import literárních děl proběhl otevřením každého souboru a zpracováním skriptem. Skript získal informace o dílu, vytvořil nové nebo navázal na již existující autory či vydavatele a vytvořil záznamy v tabulkách. Pro práci s XML byla použita standardní knihovna ElementTree\footnote{domovská stránka: \url{https://docs.python.org/2/}}. Python má stejnojmenou knihovnu pro práci s databází sqlite.
+            
+            V~ElementTree se na začátku zavolá funkce getroot. Tato funkce inicializuje proměnnou, ve které je obsah souboru a  dá se v ní snadno přistupovat k jednotlivým tagům. Tag hlavicka indikuje údaje o dílu a obsah díla patří pod tag text. Funkce find slouží k nalezení a vrácení tagu podle jeho názvu.
+            
+            Fulltextové vyhledávání v aplikaci vyžaduje text bez tagů. K tomu slouží funkce itertext, která ignoruje tagy a vrátí celý text. Naopak funkce pro získání obsahu včetně tagů není v ElementTree vestavěna. Nicméně potřebný text lze dostat spojením jiných funkcí. Obsah této funkce byl inpirován \cite{fn01}. 
+            
+            Některá díla mají více autorů. V takovém případě všechna jména zapsána v tagu author. Tato jména jsou ohraničena množinovými závorkami a oddělena středníkem. Mnoho autorů si v průběhu své tvorby vymyslelo pseudonym. Pseudonym autora je indikován znakem \uv{=}. Vlevo od znaku je pseudonym a vpravo je pravé jméno autora. Funkce doAuthors vrací id autora nebo pole id autorů v závislosti na vstupním parametru authors. Tento parametr je typu string a pokud začíná znakem \uv{\{}, má dílo více autorů. Pro tento případ funguje funkce jako rekurze. Druhým parametrem funkce je indikátor rekurze (recursion).
+            
+            Pro ilustraci je uveden začátek funkce zpracování autorů díla.
+             \begin{lstlisting}
+def doAuthors(authors, recursion):
+    #there is no author
+    if (authors == 'neznamy'):
+        return -1
+    #there are more authors
+    if (authors[0] == '{'):
+        authors = authors.replace('{', '')
+        authors = authors.replace('}', '')
+        authArr = authors.split(';')
+        authArr[0] = ' ' + authArr[0]
+        out = []
+        for authorName in authArr:
+            out.append(doAuthors(authorName, 1))
+        return out
+    #there is only author 
+    elif (authors.find('=') == -1):
+        authors = authors.replace('(', '')
+        authors = authors.replace(')', '')
+        lastName, sep, name = authors.partition(',')
+        name = name[1:]
+        if (recursion == 1):
+            lastName = lastName[1:]
+        #create or find and select author id from DB    
+        return getAuthorId(name, lastName)
+             \end{lstlisting}
+            
+            Pro obsluhu vydavatelů byla použita funkce doPublisher, která pracuje podobně jako funkce pro autory, nicméně se zde nevyskytují pseudonymy. 
+            
+            Import do tabulky works proběhl ve funkci doWorks. Funkce má v parametrech název díla (title), rok vydání (year), status, proměnnou, která obsahuje ostatní informace (meta), fulltext, text (content) a poznámku k vydání (note). Funkce vrací id vytvořeného díla. Příklad zjištění počtu stránek díla z parametru meta:
+            \begin{lstlisting}
+    pages = ''.join(meta.find('stran').itertext())
+            \end{lstlisting}
+            
+            Záznamů do tabulky connection byly vloženy pomocí funkce doConnection. Tato funkce má parametry workId, indexId a typeOfConn. První je id vytvořeného díla a indexId je pole id autorů nebo vydavatelů, které může obsahovat jeden prvek. TypeOfConn je typ propojení, kterým je buď author nebo publisher. 
+            
+        \subsection{Přílohy}
+            Zaměstnanci UČL AV dodali společně s některými díly naskenované stránky. Jednotlivá díla jsou nazvána číslem ve formátu 0001.xml.
+            
+            sprava
+                jak se můžou přidávat ubírat jejich názvy
+            
+        
     \section{Kostra aplikace}
         základní aplikace pomoci slimframeworku
-    \section{Přílohy}
-        jakým způsobem jsem je zahrnul do práce
-        \subsection{Správa}
-            jak se můžou přidávat ubírat jejich názvy
+
