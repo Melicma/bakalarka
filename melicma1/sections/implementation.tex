@@ -16,7 +16,7 @@
             Některá díla mají více autorů. V takovém případě všechna jména zapsána v tagu author. Tato jména jsou ohraničena množinovými závorkami a oddělena středníkem. Mnoho autorů si v průběhu své tvorby vymyslelo pseudonym. Pseudonym autora je indikován znakem \uv{=}. Vlevo od znaku je pseudonym a vpravo je pravé jméno autora. Funkce doAuthors vrací id autora nebo pole id autorů v závislosti na vstupním parametru authors. Tento parametr je typu string a pokud začíná znakem \uv{\{}, má dílo více autorů. Pro tento případ funguje funkce jako rekurze. Druhým parametrem funkce je indikátor rekurze (recursion).
             
             Pro ilustraci je uveden začátek funkce zpracování autorů díla.
-             \begin{lstlisting}
+             \begin{minted}[frame=single, autogobble=true, label=doAuthors]{python}
 def doAuthors(authors, recursion):
     #there is no author
     if (authors == 'neznamy'):
@@ -41,7 +41,7 @@ def doAuthors(authors, recursion):
             lastName = lastName[1:]
         #create or find and select author id from DB    
         return getAuthorId(name, lastName)
-             \end{lstlisting}
+             \end{minted}
             
             Pro obsluhu vydavatelů byla použita funkce doPublisher, která pracuje podobně jako funkce pro autory, nicméně se zde nevyskytují pseudonymy. 
             
@@ -50,15 +50,62 @@ def doAuthors(authors, recursion):
     pages = ''.join(meta.find('stran').itertext())
             \end{lstlisting}
             
-            Záznamů do tabulky connection byly vloženy pomocí funkce doConnection. Tato funkce má parametry workId, indexId a typeOfConn. První je id vytvořeného díla a indexId je pole id autorů nebo vydavatelů, které může obsahovat jeden prvek. TypeOfConn je typ propojení, kterým je buď author nebo publisher. 
+            Záznamů do tabulky connection byly vloženy pomocí funkce doConnection. Tato funkce má parametry workId, indexId a typeOfConn. První je id vytvořeného díla a indexId je pole id autorů nebo vydavatelů, které může obsahovat jeden prvek. TypeOfConn je typ propojení, kterým je buď author nebo publisher. Obsah funkce je pouze databázový dotaz typu insert.
             
         \subsection{Přílohy}
-            Zaměstnanci UČL AV dodali společně s některými díly naskenované stránky. Jednotlivá díla jsou nazvána číslem ve formátu 0001.xml.
+            Zaměstnanci UČL AV dodali společně s některými díly i jejich naskenované stránky. Adresář scan obsahoval  podadresáře img, kde byly hlavní obrázky a thumbs, kde se nacházely zmenšené obrázky. Jednotlivá díla jsou nazvána číslem například 0001.xml. Tato čísla byla zároveň adresářem v img i thumbs. Podle čísla se zjistilo, ke kterému dílu obrázky patří. V číselných podadresářích byly uloženy obrázky ve formátu jpg a u hlavních obrázků byl soubor pages.csv, ve kterém byly informace o jednotlivých stránkách. Přílohy byly uloženy s číselným názvem. Příklad záznamu v souboru pages: 002.jpg;Strana [1]. Tuto informaci bylo nutné zpracovat a vložit do tabulky jako poznámku k příloze. Problém nastal při otevírání soboru pages.cvs, protože pracovníci si nepamatovali v jakém kódování soubor uložili. Po chvilkovém bádání se zjistilo, že použili cp1250. 
             
-            sprava
-                jak se můžou přidávat ubírat jejich názvy
+            V aplikaci se přílohy přidávají do adresáře images a podadresáře nazvaném podle id díla. §§K tomuto id byly kvůli řazení přidány nuly z leva, aby mělo 5 míst.§§ Názvy příloh jsou u každého díla tvořena číslem začínajícím od 1. Pro snadnější řazení se jméno skládá ze tří znaků, čísla a nezbytné nuly na začátku. Zmenšené obrázky mají ke jménu přidanou příponu \_small, příklad názvu obrázku: 010\_small.jpg. Vytvářet adresáře lze pomocí knihovny os, čtení souboru zajistí knihovna pandas a obsluhu souborového systému obstará knihovna shutil. Pro import příloh byla použita následující funkce:
+
+%\pagebreak
+            \begin{minted}[frame=single, autogobble=true, label=doAttachments]{python}
+def doAttachments(workID, oldID):
+    #create directory if not exists
+    os.makedirs('./images/' + '{0:0=5d}'.format(workID),
+                exist_ok=True)
+    tmp = './scan/scan/img/'+str(oldID)+'/'
+    tmpSmall = './scan/scan/thumbs/'+str(oldID)+'/'
+    khe = pd.read_csv(tmp + 'pages.csv',
+                      encoding='cp1250',
+                      sep=';', header=None)
+    khe.columns = ['id', 'poznamka']
+    l = 1
+    for value in khe.id.keys():
+        db.execute(insertAttachmentSQL,
+                   [workID, khe.poznamka[value],
+                   str('{0:0=3d}'.format(l)) + '.jpg'])
+        sh.copy(tmp + khe.id[value], 
+               './images/' + 
+                str('{0:0=5d}'.format(workID)) + '/' +
+                str('{0:0=3d}'.format(l)) + '.jpg')
+        sh.copy(tmpSmall + khe.id[value], 
+               './images/' + 
+               str('{0:0=5d}'.format(workID)) + '/' +
+               str('{0:0=3d}'.format(l)) + '_small.jpg')
+        l = l + 1
+            \end{minted}
+
             
+            
+    \section{Aplikace}
+    
+        \subsection{Kostra aplikace}
+            základní aplikace pomoci slimframeworku
+            
+        \subsection{Login}
+            popis login funkcí
+            
+        \subsection{Seznam děl}
+
+        \subsection{Seznam autorů a vydavatelů}
         
-    \section{Kostra aplikace}
-        základní aplikace pomoci slimframeworku
+        \subsection{Metadata}
+        
+        \subsection{Přidat nového autora nebo vydavatele}
+        
+        \subsection{Upravit autora nebo vydavatele}
+
+        \subsection{Přílohy}
+
+
 
