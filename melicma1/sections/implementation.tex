@@ -57,7 +57,7 @@ def doAuthors(authors, recursion):
             
             V aplikaci se přílohy přidávají do adresáře images a podadresáře nazvaném podle id díla. Aby bylo id tvořeno pěti číslicemi byly k němu zleva přidány 4 nuly. Názvy příloh jsou u každého díla tvořena číslem začínajícím od 1. Pro snadnější řazení se jméno skládá ze tří znaků, čísla a nezbytné nuly na začátku. Zmenšené obrázky mají ke jménu přidanou příponu \_small, příklad názvu obrázku: 010\_small.jpg. Vytvářet adresáře lze pomocí knihovny os, čtení souboru zajistí knihovna pandas a obsluhu souborového systému obstará knihovna shutil. Pro import příloh byla použita následující funkce:
 
-%\pagebreak
+\pagebreak
             \begin{minted}[frame=single, autogobble=true, label=doAttachments]{python}
 def doAttachments(workID, oldID):
     #create directory if not exists
