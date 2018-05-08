@@ -37,17 +37,17 @@
 \authorGN{Martin} %(křestní) jméno (jména) autora
 \authorFN{Melichar} %příjmení autora
 \authorWithDegrees{Martin Melichar} %jméno autora včetně současných akademických titulů
-\supervisor{ing. Karel Klouda, Ph.D}
-\acknowledgements{Doplňte, máte-li komu a za co děkovat. V~opačném případě úplně odstraňte tento příkaz.}
+\supervisor{Ing. Karel Klouda, Ph.D.}
+\acknowledgements{V prvé řadě bych rád poděkoval panu Ing. Karlu Kloudovi, Ph.D. za pomoc, trpělivost a odborné rady v průbehu psaní této bakalářské práce a za možnost podílet se na reálném projektu, který se bude pravděpodobně v praxi používat. Dále bych chtěl poděkovat své přítelkyni a rodině za trpělivost a podporu v průběhu studia na ČVUT. }
 \abstractCS{
-Cílem této bakalářské práce je ulehčit převod literárních děl do elektronické podoby. Výsledná aplikace předpokládá naskenování knihy a poté načtení výsledku do aplikace. Následně přichází na řadu správa knihy např. oprava chyb z naskenování nebo úprava její části. Vytvořené řešení umožňuje upravovat, mazat nebo přidávat dílčí součásti knihy např. autor práce. //todo nějaké čísla (zrychlení atd.)// Hlavním výsledkem je zrychlení vytváření a snadné upravování elektronických verzí literárních děl.
+Cílem této bakalářské práce je ulehčit převod literárních děl do elektronické podoby. Vytvořené řešení dovoluje upravovat, mazat nebo přidávat dílčí součásti knihy např. autora díla a také spravovat přidružené přílohy k jednotlivým dílům. Systém je napsán v PHP pomocí microframeworku Slim. Hlavním výsledkem je zrychlení vytváření a snadné upravování elektronických verzí literárních děl.
 
 }
-\abstractEN{Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.}
+\abstractEN{The aim of this thesis is to facilitate the conversion of literary works into electronic form.}
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{4} %volba Prohlášení (číslo 1-6)
-\keywordsCS{webová aplikace, redakční systém, návrh a implementace, správa eletronických literárních děl, TEI, Slim, PHP}
-\keywordsEN{web application, management system, design and implementation, digitalized literary works, TEI, Slim, PHP}
+\keywordsCS{webová aplikace, redakční systém, návrh a implementace, správa eletronických literárních děl, Slim, PHP}
+\keywordsEN{web application, management system, design and implementation, digitalized literary works, Slim, PHP}
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
@@ -90,7 +90,14 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
 
 
 \begin{conclusion}
-	%sem napište závěr Vaší práce
+    
+	Cílem práce bylo vytvoření systému pro správu a snadné vytváření elektronických verzí literárních děl včetně otestování a řádné dokumentace. Vytvořená aplikace dovoluje snadné vložení elektronické verze díla a následné upravení díla. V aplikaci je k dispozi správa příloh k jednotlivým dílům. Tyto přílohy jsou naskenované původní díla a lze je do aplikace přidat pomocí hromadného uploadu.
+	
+	Součástí vývoje je import dat, které mají pracovnící k dipozici. Jedná se o 1700 sbírek básní ve formátu XML. Import byl ztížený nesourodými daty v databázi. Díla měla různé tagy s ruznými atributy, nicméně data se sjednotila a úspěšně importovala do nové databáze. V přílohách, které bylo nutno taky sjednotit, byly taktéž nesrovnalosti. V souboru, ve kterém byly identifikátory jednotlivých obrázků, se tyto poznámky prezentovaly ruzným způsobem. Nejpre se muselo sjednotit podobu a poté se mohl provést import do nové databáze. Nakonec proběhl převod úspěšně.
+	
+	Aplikace je vyvinuta na míru pro UČL AV a proto byly všechny požadavky podrobně probírány se zaměstnancemi ústavu. Problém nastával po opakované změně požadavků v průběhu implementace. Nicméně podařilo se vyhovět všem počátečním požadavkům a po krátkých rozpravách i těm změněným. 
+	
+	Cíl práce se podařilo úspěšně splnit a výsledná aplikace bude v brzké době začleněna do praxe.
 
 \end{conclusion}
 
@@ -154,6 +161,7 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
 	\item[UČL AV] Ústavu české literatury Akademie věd České republiky
 	\item[ISS] Internet Information Services
 	\item[DRM] Digital rights management
+	\item[DIC] Dependency Injection Container
 \end{description}
 
 

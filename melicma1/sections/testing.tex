@@ -1,6 +1,52 @@
 
 \chapter{Testování}
-        testováíní aplikace
-    \section{Uživatelské testy}
+        Testování aplikace je důležitou součástí projektu, protože se ještě před vydáním aplikace zjistí, zda funguje vše, jak má. Díky testování se dá předejít případným fatálním chybám systému. Pro testování z hlediska kódu byla výbrána metoda jednotkových testů a pro testování, zda je prostředí uživatelsky přívětivé, se použila metoda kognitivního průchodu aplikace.
         
-    \section{Funkční testy}
+    \section{Uživatelské testování}
+        Uživatelské testování probíhalo formou kognitivních průchodů. Kognitivní průchod je prediktivní metoda testování aplikace. Díky této metodě se zjistí, jestli je aplikace přehledná a zda se dá ovládat intuitivně. K provedení testu jsou potřeba alespoň tři respondeti, testovací scénáře a testovací artefakt. 
+        
+        Relevantní výsledky testu zajistí výběr osob z různých věkových katogorií a odlišného zaměstnání. Prvním subjektem je studentka VŠ ve věku 23 let, která před rokem dosáhla bakalářského stupně vzdělání. Počítač používá denně okolo 6 hodin zejména k aktivitám na sociálních sítích. Druhým testerem je pětatřicetiletý dělník, který má základní vzdělání a denně stráví na počítači okolo 2 hodin. Poslední účastník testu je prodavač, který dovršil 53 let. Jeho dosažené vzdělání je střední s maturitou a denně stráví méně jak 3 hodiny na počítači.
+        
+        \subsection{První scénář}
+            Prvním úkolem pro účastníky bylo přidání pseudonymu k autorovi Petr Bezruč. Na tomto scénáři se testovalo, zda uživatelé pochopí, že musí založit nového autora a přiřadit referenci k reálné osobě.
+            
+            Při plnění zadání respondentům nejdéle trvalo najít, kde se přidává nový záznam autora. Poté se stalo, že testeři hledali samotný záznam Petr Bezruč a zkoušeli jej upravit. Nicméně po menší radě se povedlo všem přidat pseudonym.
+            
+            Díky připomínkám osob se zvýraznil odkaz v menu na seznam autorů a vydavatelů a změnila se pozice tlačítka pro založení nového záznamu. Nově je tlačítko viditelné ihned po přesměrování na seznam autorů a vydavatelů. 
+
+        \subsection{Druhý scénář}
+            Jako druhá akce, kterou měli testeři projít bylo nahrazení poslední přílohy u díla České zpěvy. Tento úkol měl ověřit, jak rychle dokážou uživatelé nalézt příslušné dílo, jestli dokážou smazat poslední přílohu a zda nahrají novou přílohu bez problémů.
+            
+            Pro vyhledání díla použili respondenti filtr v horní části stránky i vestavěný filtr v tabulce děl. Intuitivně ihned nalezli poslední přílohu. Nicméně ze začátku zkoušeli nahradit původní přílohu novou. Až po chvíli pochopili, že musí nejprve přílohu smazat a poté nahrát novou.
+
+            Výsledkem testu je posunutí prvku pro nahrání příloh výš, aby bylo lépe vidět a vložení nápovědy. Tato nápověda se zobrazí po najetí kurzoru na otazníček v kruhu.
+
+        \subsection{Třetí scénář}
+            Posledním scénářem bylo upravení ediční poznámky díla jejímž autorem je Ferdinand Tomek. Zde se kontrolovalo vyhledávání v dílech a zda je formulář pro změnu údajů o dílech snadno pochopitelný.
+            
+            V průběhu testování využili osoby zkušenosti s vyhledáváním z předešlých scénářů a neměli žádný problém s úpravou záznamu. 
+            
+            Po opakovaném použití aplikace respondetni pochvalují jednoduchost a snadné ovládání aplikace. Po zpětné vazbě byly opraveny nejasné pasáže, zvýrazněny hlavní funkce a přidány krátké a výstižné nápovědy.
+
+    \section{Jednotkové testy}
+        Jednotkové testy prověřují funkčnost jednotlivých částí programu, v tomto případě funkcí v souboru routes.php. Byly otestovány všechny hlavní stránky od zobrazení literárních děl v tabulce po úpravu jednotlivých autorů.
+        
+        Framework Slim dovoluje provádět testování pomocí knihovny PHPUnit. Pomocí této knihovny lze simulovat server aplikace a posílat na něj požadavky. V odpovědích se testuje, zda odpověď obsahuje očekávaný html status a jestli se renderuje správná šablona. Test správnosti v odpovědi se provádí pomocí assertů. Příklad jednoho testu včetně assertu.
+        
+        \pagebreak
+        
+        \begin{minted}[frame=single, autogobble=true, label=Test změny názvu díla s WorkID 52]{php}
+<?php
+public function testPostMetadata()
+    {
+        $response = $this->runApp('POST', '/metadata/52', 
+                                  array('title' => 'test' ));
+        $this->assertEquals(302, $response->getStatusCode());
+    }
+?>
+        \end{minted}
+        
+        Díky jednotkovým testům byly zjištěny menší chyby, které vznikly při aktualizaci databáze, nicméně byly rychle opraveny. Ostatní testy proběhly bez chyb, tudíž se aplikace považuje za otestovanou.
+        
+    \section{Testování ústavem}
+        Aplikace byla v průběhu vývoje posílána k testování zaměstnancům UČL AV. Pokud měli pracovníci nějaké připomínky, byly ihned vyřešeny. K finální verzi nebyly již vzneseny žádné připomínky.

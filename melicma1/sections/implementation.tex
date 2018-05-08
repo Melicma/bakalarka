@@ -55,10 +55,10 @@ def doAuthors(authors, recursion):
         \subsection{Přílohy}
             Zaměstnanci UČL AV dodali společně s některými díly i jejich naskenované stránky. Adresář scan obsahoval  podadresáře img, kde byly hlavní obrázky a thumbs, kde se nacházely zmenšené obrázky. Jednotlivá díla jsou nazvána číslem například 0001.xml. Tato čísla byla zároveň adresářem v img i thumbs. Podle čísla se zjistilo, ke kterému dílu obrázky patří. V číselných podadresářích byly uloženy obrázky ve formátu jpg a u hlavních obrázků byl soubor pages.csv, ve kterém byly informace o jednotlivých stránkách. Přílohy byly uloženy s číselným názvem. Příklad záznamu v souboru pages: 002.jpg;Strana [1]. Tuto informaci bylo nutné zpracovat a vložit do tabulky jako poznámku k příloze. Problém nastal při otevírání soboru pages.cvs, protože pracovníci si nepamatovali v jakém kódování soubor uložili. Po chvilkovém bádání se zjistilo, že použili cp1250. 
             
-            V aplikaci se přílohy přidávají do adresáře images a podadresáře nazvaném podle id díla. Aby bylo id tvořeno pěti číslicemi byly k němu zleva přidány 4 nuly. Názvy příloh jsou u každého díla tvořena číslem začínajícím od 1. Pro snadnější řazení se jméno skládá ze tří znaků, čísla a nezbytné nuly na začátku. Zmenšené obrázky mají ke jménu přidanou příponu \_small, příklad názvu obrázku: 010\_small.jpg. Vytvářet adresáře lze pomocí knihovny os, čtení souboru zajistí knihovna pandas a obsluhu souborového systému obstará knihovna shutil. Pro import příloh byla použita následující funkce:
+            V aplikaci se přílohy přidávají do adresáře images a podadresáře nazvaném podle id díla. Aby bylo id tvořeny pěti číslicemi byly k němu zleva přidány nuly. Názvy příloh jsou u každého díla tvořena číslem začínajícím od 1. Pro snadnější řazení se jméno skládá ze tří znaků, čísla a nezbytné nuly na začátku. Zmenšené obrázky mají ke jménu přidanou příponu \_small, příklad názvu obrázku: 010\_small.jpg. Vytváření adresářů se provádělo pomocí knihovny os, čtení souboru zajistila knihovna pandas a obsluhu souborového systému obstarala knihovna shutil. Pro import příloh byla použita následující funkce:
 
 \pagebreak
-            \begin{minted}[frame=single, autogobble=true, label=doAttachments]{python}
+            \begin{minted}[frame=single, autogobble=true, label=Funkce doAttachments]{python}
 def doAttachments(workID, oldID):
     #create directory if not exists
     os.makedirs('./images/' + '{0:0=5d}'.format(workID),
@@ -89,23 +89,102 @@ def doAttachments(workID, oldID):
             
     \section{Aplikace}
     
+        Implementace aplikace probíhala bez větších potíží. Software se vyvíjel podle domluvených návrhů s drobnými úpravami, které byly dohodnuty s pracovníky UČL AV. Na poslední chvíli ústav měnil svá rozhodnutí, například u hromadného nahrávání příloh již neměla být možnost upravovat pořadí obrázků. Nicméně se nejednalo o velké změny a vývoj nebyl zásadně ovlivněn.
         \subsection{Kostra aplikace}
-            základní aplikace pomoci slimframeworku
+            Vývojáři Slimu dávají k dispozici počáteční aplikaci\footnote{zdroj githubu Slim-Skeleton: \url{https://github.com/slimphp/Slim-Skeleton}} jako výchozí stav pro vývoj. Po naklonování repozitáře a spuštění composeru podle návodu skeletonu lze spustit testovací server pomocí PHP příkazem:
+            \begin{lstlisting}
+    php -S localhost:8080 -t public public/index.php
+            \end{lstlisting}
+            Po zadání příkazu je možné aplikaci spustit v internetovém prohlížeči na adrese localhost:8080.
             
+            Adresářová struktura byla ponechána podle skeletonu. V kořenovém adresáři jsou podadresáře logs, public, src, templates a tests. Podadresáře components a vendor se přidali automaticky po spuštění composeru a nahrání nezbytných knihoven. Poslední podadresář db byl vytvořen pro uložení databáze.
+
+            Adresář logs slouží pro archivaci logů v aplikaci. Při užívání aplikace Slim dovoluje skrze middleware snadno zapisovat potřebné výpisy.
+            
+            V public jsou soubory úzce spojené s chodem aplikace. Podadresáře js jsou pro skripty, css obsahuje styly a images slouží pro naskenované obrázky, které patří k jednotilvým dílům. Dále je zde soubor index.php, ve kterém se spouští samotná aplikace.
+            
+            Ve složce src jsou soubory nezbytné pro fungování Slim aplikace. Soubor dependencies.php je určen pro vložení závislostí na externí knihovny. Slim použivá DIC (Dependency Injection Container) systém pro uchovávání těchto závislotí. Úkolem toho systému je nahrát závislost, uložit a poskytnou ji programátorovi kdykoliv to bude potřebovat. V této aplikaci byla použita databáze SQLite, pro připojení závislosti byl přidán následující kód do dependencies.php:
+            \begin{minted}[frame=single, autogobble=true, label=Přidání databáze]{php}
+<?php
+    $container['db'] = function ($c) {
+        $pdo = new PDO("sqlite:./db/ebooks");
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, 
+                           PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, 
+                           PDO::FETCH_ASSOC);
+        $pdo->exec( 'PRAGMA foreign_keys = ON;' );
+        return $pdo;
+    };
+?>
+            \end{minted}
+            Díky SQLite je databáze uložena v jednom souboru (ebooks) ve složce db. V souboru middleware.php lze nastavit kód, který slouží například k ovládání požadavku a odpovědi na server. Zde se v aplikaci nastavila session, ve které je uložen přihlášený uživatel. Pomocí middleware se kontroluje, zda je uživatel přihlášený a jestli má práva k dané akci.  Počáteční konfigurace aplikace je v settings.php. Obsluha všech požadavků zaslaných na server je implementována v souboru routes.php. Díky Slimu je na serveru jednoduché zachytit požadavky zaslané z aplikace. Metoda POST funguje obdobně jako Get. Následující funkce se spustí po zaslání požadavku GET na stránku login:
+            \pagebreak
+            \begin{minted}[frame=single, autogobble=true, label=Obsluha požadavku GET na login]{php}
+<?php
+    $app->get('/login', function (Request $req, Response $res, 
+                                  array $args) {
+        $tmp = false;
+        if ($req->getParam('sessionError')) {
+            $tmp = true;
+        }
+        return $this->view->render($res, 'login.twig', [
+            'sessionError' => $tmp
+        ]);
+    })->setName('login');
+?>
+            \end{minted}
+            
+            Templates obsahuje html šablony pro zobrazení na webu. Podle návrhu aplikace měla využívat šablonovací systém TWIG, proto adresář obsahuje soubory s koncovku .twig a výchozí soubor home.phtml. Navíc pomocí TWIGu lze zobrazit stejný formulář pro různá data, například v aplikaci se pro úpravu autora nebo vydavatele používá stejná šablona authorPublisher.twig. Ve výchozím souboru se načítají potřebná metadata, css a skripty. Tento soubor se používá jako základ html stránky pro zobrazení všech šablon. Následující příkaz zajišťuje vložení TWIG šablony do výchozího html souboru. 
+            \begin{lstlisting}
+            {% block content %}{% endblock %}
+            \end{lstlisting}
+             
+             Adresář tests obsahuje soubory pro automatické testování aplikace. Ve skeletonu jsou připraveny soubory pro jednotkové testování. Obsahují předvyplněné základní testy, nicméně pro testováná této aplikace museli být přizpůsobeny konfiguraci aplikace.
+             
         \subsection{Login}
-            popis login funkcí
+            Na stránce login byl podle návrhu naimplementován jednoduchý přihlašovací formulář pro email a heslo. Pokud je email nebo heslo špatně zadané, zobrazí se uživateli formulář se zprávou o nesprávně zadaném obsahu. Po úspěšném přihlášení se stránka přesměruje na seznam děl (content).
             
         \subsection{Seznam děl}
-
+            U seznamu děl a všech dalších stránek je narozdíl od návrhu horní část stránky vyhrazena pro navigační lištu aplikace. Do této části jsou vlevo vložené odkazy na ostatní stránky a vpravo možnosti přihlášeného uživatele. Tato lišta je implementována pomocí Bootstrap navbaru. 
+            
+            Drobné úpravy oproti návrhu jsou vidět i ve filtru děl. Pro větší přehlednost byly jednotlivé složky filtru rozděleny po řádcích. Výběr autorů zajištuje externí knihovna Selectivity\footnote{domovská stránka: \url{https://arendjr.github.io/selectivity/}}. Tato knihovna obsahuje několik možností výběru prvků, ve filtru byl použit vícenásobný výběr společně s možností žádného výběru. Ostatní prvky filtru patří ke klasickým Bootstrap elementům. Dropdowny pro výběr roku vydání, textový input pro fulltextové vyhledávání a checkboxy, které značí jaký typ díla má být zobrazen.
+            
+            Tabulka literárních děl se shoduje s návrhem a je implementována pomocí knihovny DataTables\footnote{domovská stránka: \url{https://datatables.net/}}. Mezi využité  výhody této knihovny patří vestavěné stránkování, okamžité vyhledávání v datech a možnost vicenásobného řazení sloupečku.
+            
         \subsection{Seznam autorů a vydavatelů}
+            Pro zobrazení seznamu autorů a vydavatelů byla použita stejně jako u seznamu děl knihovna DataTable. Nicméně vzhledem k návrhu přibyl v tabulce sloupec s počtem výskytu daného záznamu u díla. Možnost přidat nového autora nebo vydavatele zde chyběla, proto byla doplněna formou odkazu na příslušnou stránku.
         
         \subsection{Metadata}
-        
+            Stránka metadata dovoluje uživateli spravovat údaje o dílu, které přímo nesouvisí s obsahem literatury. K implementaci byli navíc podle návrhu přidaní vedle autorů vydavatelé. Obě skupiny lze přidávat a odebírat pomocí knihovny selectivity a mohou obsahovat jeden i více záznamů.
+            
+            Metadata lze upravovat pomocí jednoduchých Bootstrap textových inputů nebo textarea při delších informacích jako je například ediční poznámka.
+            
         \subsection{Přidat nového autora nebo vydavatele}
+            Přidat nového autora nebo vydavatele lze provést dvěma způsoby. První je přímo na stránce metadata díla, kde se společně se záznamem vytvoří spojení v tabulce author\_work a druhá je v seznamu autoru a vydavatelů, kde se vytvoří pouze záznam.
+            
+            Přídat je možné osobu se jménem a přijmením, pseudonym osoby nebo korporaci. Při přidávání pseudonymu je nutno vybrat z možností ostatních záznamů, aby byla zajištěna reference na reálného autora. Tuto možnost lze vybrat pomocí knihovny selectivity, nicméně výběr je zúžen na jeden nebo žádný záznam.
         
         \subsection{Upravit autora nebo vydavatele}
+            Autora nebo vydavatele lze upravit pomocí stejné TWIG šablony jako pro přidání nového údaje. Jediný rozdíl je v nadpisu stránky, který pro úpravu záznamu zobrazí jméno, přijmení a korporaci a pro nový záznam zobrazí text Nový záznam.
 
+        \subsection{Přidat nového uživatele}
+            Nového uživatele může přidat pouze uživatel, který je v roli admina. Tato funkce se nachází v pravé části navigace po výběru možnosti přidat uživatele. Šablona addUser.twig, která je zobrazena při této akci, obsahuje jednoduchý formulář pro vložení emailu a hesla nového uživatele. Heslo je pro kontrolu nutno zadat dvakrát. Při zaslání požadavku přidání uživatele na server se kontroluje, zda email již není registrován a zda souhlasí obě zadaná hesla. V kladném případě se založí nový uživatel, který se může do aplikace ihned přihlásit.
+        
+        \subsection{Změna hesla uživatele}
+            Změnu hesla může provést každý uživatel v pravé části navigátoru. Stránka změna hesla obsahuje obdobně jako u přidání nového uživatele jednoduchý formulář, kde se pro jistotu musí zvolit staré a poté dvakrát nové heslo.
+        
         \subsection{Přílohy}
-
-
+            Při vytváření stránky přílohy docházelo ke změnám názoru ústavu a musely se opakovaně přepisovat funkce. Nicméně změny nebyly rozsáhlé. Podle návrhu byla implementována možnost hromadného uploadu scanů pomocí Bootstrap custom file input. Smazání všech příloh se provede po potvrzení akce.
+            
+            Nahrané přílohy se nejprve seřadí abecedně podle jména a poté se uloží na server do patřičného adresáře. Název adresáře je WorkID díla, pokud id není pětimístné jsou k němu zprava přidány nuly. Jméno přílohy se určuje počtem již nahraných obrázků k dílu a pokud počet není třímístný přidají se ke jménu zleva nuly. Automaticky se také vytvoří miniatury obrázků pro zobrazení na stránce, kterým se přidá přípona \_small.
+            Příklad vytvoření jména adresáře příloh díla:
+            \begin{minted}[frame=single, autogobble=true, label=Vytvoření adresáře pro přílohy k dílu]{php}
+<?php
+    $path = __DIR__.'/../public/images/' .
+            str_pad($args['workId'], 5, '0', STR_PAD_LEFT).'/';
+    if (!file_exists($path)) {
+        mkdir($path, 0777, true);
+    }
+?>
+            \end{minted}
 
