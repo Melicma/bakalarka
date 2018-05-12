@@ -1,8 +1,9 @@
 \chapter{Analýza}
 
     \section{Existující řešení}
-        Před návrhem a implementací aplikace bylo potřeba řádně prozkoumat existující řešení problému, technologií k tvorbě a elektronické formáty, které se užívají pro uchování elektronických děl. Vzhledem k roztoucí poptávce po elektronických dílech na úkor papírových se podle očekávání objevilo mnoho aplikací pro editaci těchto děl.\\
-        Následují informace o pěti editorech, které uvádí server \cite{tei-wiki} 
+        Před návrhem a implementací aplikace bylo potřeba řádně prozkoumat existující řešení problému, technologie k tvorbě a elektronické formáty, které se užívají pro uchování elektronických děl. Vzhledem k roztoucí poptávce po elektronických dílech na úkor papírových se podle očekávání objevilo mnoho aplikací pro editaci těchto děl. Dle pracovníku UČL AV je výběr omezen na aplikace pracující s formátem XML.
+        
+        Následují informace o pěti editorech, které uvádí server \cite{tei-wiki}:
         %Podle serveru  existuje následujícíh pět editorů 
         \begin{itemize}
             \item Emeditor,
@@ -15,27 +16,27 @@
         \subsection{Emeditor}
             Emeditor\footnote{domovská stránka: \url{https://www.emeditor.com/}} patří podle \cite{tei-wiki} mezi nejlepší XML editory. Tento software je hlavním produktem americké firmy Emurasoft, Inc. sídlící v Redmondu ve Washingtonu. Firma se nadále stará o podporu i vývoj. Nicméně autorem editoru je Yutaka Emura. Samotná aplikace již vyhrála 24 mezinárodních cen v kategoriích nejlepší webový nástroj nebo nejlepší aplikace roku 2008. 
             
-            \subsubsection{výhody}
+            \textbf{Výhody:}
                 \begin{itemize}
-                    \item poslední release v17.5.0 vyšla 27.\,února\,2018, je tedy pravidelně aktualizován,
+                    \item poslední release v17.5.0 vyšla 27.\,února\,2018, aplikace je tedy pravidelně aktualizována,
                     \item podpora velkých souborů,
                     \item použití více jader při větší zátěži,
                     \item kódování UTF-8,
                     \item konfigurovatelná kontrola pravopisu.
                 \end{itemize}
                 
-            \subsubsection{nevýhody}
+            \textbf{Nevýhody:}
                 \begin{itemize}
                     \item aplikace je placená, ale nabízí trial verzi na 30 dní,
                     \item existuje free verze, nicméně v ní chybí zásadní funkce,
                     \item editor je pouze pro Windows,
-                    \item chybí přehledný průvodce základních funkcí po prvním spuštění.
-                \end{itemize}
+                    \item chybí přehledný průvodce základních funkcí po prvním spuštění,
+                    \item aplikace funguje jako editor a proto není možná, aby více uživatelů současně pracovali se stejnými daty.                \end{itemize}
                 
         \subsection{Editix} 
-            Editix\footnote{domovská stránka: \url{http://www.editix.com/index.html/}} je produktem francouzské společnosti JAPISoft SARL. Editor vytvořil Alexandre Brillant. Systém je velice přehledný a intuitivní. Na trhu je systém od roku 2004 a nejnovější verze je EditiX XML Editor 2017 v15. Zákazníci, kteří využívají tento software jsou převážně vzdělávací instituty od University of Oxford po University of Arizona.
+            Editix\footnote{domovská stránka: \url{http://www.editix.com/index.html/}} je produktem francouzské společnosti JAPISoft SARL. Editor vytvořil Alexandre Brillant. Systém je velice přehledný a intuitivní. Na trhu je systém od roku 2004 a nejnovější verze je EditiX XML Editor 2017 v15. Zákazníci, kteří využívají tento software, jsou převážně vzdělávací instituty od University of Oxford po University of Arizona.
             
-            \subsubsection{výhody}
+            \textbf{Výhody:}
                 \begin{itemize}
                     \item přehledný program,
                     \item aplikace je pro platformy Windows, Linux, MacOS,
@@ -44,18 +45,19 @@
                     \item obsahuje inteligentní našeptávač, který pomáhá uživatelům.
                 \end{itemize}
                 
-            \subsubsection{nevýhody}
+            \textbf{Nevýhody:}
                 \begin{itemize}
-                    \item verze pro je placená, ale nabízí trial verzi na 30 dní,
-                    \item existuje lite verze, které chybí spoustu funkcí,
+                    \item verze Pro je placená, ale nabízí trial verzi na 30 dní,
+                    \item existuje Lite verze, které chybí mnoho funkcí,
                     \item zaplacení licence se vztahuje pouze na jednoho uživatele,
                     \item první update je zdarma, další se musí zaplatit.
+                    \item aplikace funguje jako editor a proto není možná, aby více uživatelů současně pracovali se stejnými daty.   
                 \end{itemize}
                 
         \subsection{EditPad Pro}
-            EditPad Pro\footnote{domovská stránka: \url{http://www.editpadpro.com/}} je výhradně textový editor, který lze použít například pro HTML, Javascript nebo XML. Software podporuje změnu jazyka napřiklad do francouzštiny, němčiny, polštiny nebo švédštiny. Projeck Just Great Software, pod kterým byla vyvynuta tato aplikace vznikl v roce 1996. Autorem projektu je Jan Goyvaerts, který je zároveň hlavním ředitelem vývojářu projektu.
+            EditPad Pro\footnote{domovská stránka: \url{http://www.editpadpro.com/}} je výhradně textový editor, který lze použít například pro HTML, Javascript nebo XML. Software podporuje změnu jazyka napřiklad do francouzštiny, němčiny, polštiny nebo švédštiny. Projeck Just Great Software, pod kterým byla vyvynuta tato aplikace, vznikl v roce 1996. Autorem projektu je Jan Goyvaerts, který je zároveň hlavním ředitelem vývojářu projektu.
 
-            \subsubsection{výhody}
+            \textbf{Výhody:}
                 \begin{itemize}
                     \item program je obecný textový editor,
                     \item obarvená syntaxe,
@@ -64,7 +66,7 @@
                     \item existuje EditPad Lite verze, která je zdarma.
                 \end{itemize}
                 
-            \subsubsection{nevýhody}
+            \textbf{Nevýhody:}
                 \begin{itemize}
                     \item nemá explicitní podporu pro XML,
                     \item aplikace je pouze pro Windows,
@@ -75,7 +77,7 @@
         \subsection{Essential XML Editor}
             Essential XML Editor\footnote{domovská stránka: \url{http://www.philo.de/xmledit/}} je jednoduchý XML editor. Jeho klíčovou vlastnostní je vestavěný XML validátor. Vývojáři dříve pojmenovali program Open XML Editor, ale po zavedení poplatku za některé funkce projekt přejmenovali. Autorem je Dieter Köhler. 
             
-            \subsubsection{výhody}
+            \textbf{Výhody:}
                 \begin{itemize}
                     \item program pracuje jako textový editor,
                     \item možnost rychle zjistit zda je soubor validní,
@@ -84,7 +86,7 @@
                     \item klávesová zkratka pro každý příkaz.
                 \end{itemize}
                 
-            \subsubsection{nevýhody}
+            \textbf{Nevýhody:}
                 \begin{itemize}
                     \item výstupní soubor pouze v UTF-8 kódování,
                     \item aplikace je pouze pro Windows,
@@ -95,7 +97,7 @@
         \subsection{Exchanger XML Editor}
             Exchanger XML Editor\footnote{domovská stránka: \url{http://www.exchangerxml.com/editor/}} je určen pro snadnou editaci, prohlížení, správu a konverzi XML souborů. Exchanger pomáhá svojí širokou nabídkou funkcí XML autorům a vývojářům.  Software je produktem firmy Cladonia, která se zaměřuje na vývoj XML aplikací. 
             
-            \subsubsection{výhody}
+            \textbf{Výhody:}
                 \begin{itemize}
                     \item nabízí plnou verzi na 30 dní,
                     \item aplikace je dotupná na všech platformách,
@@ -104,7 +106,7 @@
                     \item automatická kontrola, jestli je soubor validní.
                 \end{itemize}
                 
-            \subsubsection{nevýhody}
+            \textbf{Nevýhody:}
                 \begin{itemize}
                     \item při instalaci nutnost najít cestu k JRE manuálně,
                     \item zastaralý software,
@@ -115,14 +117,6 @@
 
              Z potenciálních konkurentů můžeme vyškrtnout Emeditor, protože je placený. Existuje neplacená verze Emeditoru, ale zároveň v ní chybí například možnost vložení tagu před a za označený text. Aplikace Editix je také zpoplatněna. Velkou nevýhodou je placení každého dalšího updatu editoru zvlášť. EditPad Pro je také placený a ve volně dostupné verzi není možnost vyhledávání v souborech. Navíc explicitně nepodporuje XML. Z názvu editoru Essential XML Editor lze odvodit, že je určený pro XML, ale ihned po spuštění aplikace je zřejmá dlouhodobá neaktualizace designu. Podobný problém s designem má Exchanger XML Editor, u kterého navíc poslední update softwaru proběhl v roce 2010.
         
-    % \section{Stávající aplikace}
-    %     V současné době mají pracovníci UČL AV k dispozici aplikaci, která byla vyvinuta již v roce 2006. Serverová část (back-end) aplikace běží v node.
-        
-    %     \subsection{Aktuální stav}
-    %     Tato aplikace je na první pohled podstatně zastaralá, a to jak v uživatelském rozhraní, tak i ve funkční části programu. To je způsobeno zastavením veškerého vývoje a podpory již před několika lety.
-
-    %     \subsection{Nedostatky}
-    %         Uživatelé pracující s aplikací si často stěžují například na rychlost běhu nebo na nemožnost přidávat chybějící části díla.
             
     \section{Technologie}
         Mezi první otázky patřilo, v jaké technologii se bude aplikace psát. Po domluvě s pracovníky UČL AV jsem měl vytvořit webovou aplikaci, která má mít přívětivé uživatelské rozhraní pro snadnou a rychlou správu elektronických děl.
@@ -134,49 +128,46 @@
             Jedna z výhod této architektury je, že klientská strana programu je oddělena od serverové části. Výpočty jsou prováděny na straně serveru, proto nejsou požadovány vysoké nároky na výpočetní techniku počítače, na kterém běží klientská část. Tato architektura také chrání data jejich uložením na server, což je jedna z nejlepších metod ochrany.
             
             Nevýhodou může být vysoká cena zařízení pro provoz případně je nutné mít pro správu serveru systémového administrátora.\\
-            Srovnání jazyků a informace pro webové aplikace uvedené na \cite{languages}:
+            Srovnání jazyků a informace pro webové aplikace uvedené na \cite{languages}.
             
             \begin{itemize}
                 \item PHP – jeden z nejrozšířenějsích jazyků, který podporoje většina poskytovatelů webhostingu. Tento jazyk je široce využíván mezi uživateli a obsahuje mnoho standardních knihovních funkcí. Hodí se pro malé nebo středně velké projekty.
                 
-                \item Ruby – navzdory tomu, že Ruby je mladý jazyk, těší se velké oblíbenosti mezi webovými vývojáři. Nejznámější framework Ruby on Rails umožňuje rychle vytvářet vzorové nebo malé projekty. Pro nové uživatele je z důvodu daných pravidel Ruby on Rails poměrně složitý. Neznalý uživatel bude mít na začátku problém i s implementací jednoduchých funkcí.
+                \item Ruby – navzdory tomu, že Ruby je mladý jazyk, těší se velké oblíbenosti mezi webovými vývojáři. Nejznámější framework Ruby on Rails umožňuje rychle vytvářet vzorové nebo malé projekty. Pro nové uživatele je Ruby on Rails poměrně složitý. Neznalý uživatel bude mít na začátku problém i s implementací jednoduchých funkcí.
                 
-                \item Python – díky nástupu velkých frameworků - například Django, je možné použit Python ve velkých webových projektech. Syntaxe kódu je podobná Ruby, ale hlavní rozdíl činí ideologie psaní kódu. Nicméně narozdíl od Ruby se Python rozvíjí rychleji.
+                \item Python – díky nástupu velkých frameworků (například Django), je možné použit Python ve velkých webových projektech. Syntaxe kódu je podobná Ruby, ale hlavní rozdíl činí ideologie psaní kódu.
                 
                 \item C\# ASP.NET – pro správné fungování jazyka je třeba zařídit ISS server, který je nezbytný pro mnoho komerčních projektů od firmy Microsoft. Jiným řešením může být použítí serveru Mono, který ale není stabilní a může obsahovat mnoho chyb.
                 
-                \item JAVA – tento široce využívaný jazyk lze aplikovat na velké či korporační projekty. Je poměrně rychlý a obsahuje spoustu již vyřešených složitých problémů, které nemusí uživatel znovu řešit. Pro začátek je vyžadováno poměrné velké množství znalostí, aby fungovala základní kostra programu, což se považuje za významnou nevýhodu.
+                \item JAVA – tento široce využívaný jazyk lze aplikovat na velké projekty. Je poměrně rychlý a obsahuje spoustu již vyřešených složitých problémů, které nemusí uživatel znovu řešit. Pro začátek je vyžadováno poměrné velké množství znalostí, aby fungovala základní kostra programu, což se považuje za významnou nevýhodu.
             \end{itemize}
 
-            Pro tento projekt postačí menší a jednodušší aplikace, kterou zaměstnanci UČL AV snadno zprovozní na svých serverech. Pracovníci nemají k dispozici server ISS, proto vypadává z výběru C\# ASP.NET. S Ruby nemám žádné zkušenosti a Python jsem dříve používal jen okrajově. PHP i JAVA jsou velice rozšířené jazyky ve webovém inženýrství, nicméně k PHP mám kladnější vztah. Znalosti PHP jsem využil hned v několika předmětech při studiu. Na základě této analýzy byl vybrán jazyk PHP.
+            Pro tento projekt postačí menší a jednodušší aplikace, kterou zaměstnanci UČL AV snadno zprovozní na svých serverech. Pracovníci nemají k dispozici server ISS, proto vypadává z výběru C\# ASP.NET. S Ruby nemám žádné zkušenosti a Python jsem dříve používal jen okrajově. PHP i JAVA jsou velice rozšířené jazyky ve webovém inženýrství, nicméně k PHP mám kladnější vztah. Velkou výhodou pro PHP je, že PHP aplikace už na serverech UČL AV běží. Znalosti PHP jsem využil hned v několika předmětech při studiu. Na základě této analýzy byl vybrán jazyk PHP.
             
         \subsection{Databáze}
-            Srovnání několika open-source databázových řešení podle \cite{database}\\
+            Srovnání několika open-source databázových řešení podle \cite{database}.
             \begin{itemize}
-                \item CUBRID\footnote{domovská stránka: \url{https://www.cubrid.org/}} – byl navržen a optimalizován pro webové aplikace. Hodí se pro práci s velkými daty, nebo při nutnosti použití více dotazů najednou. Výhodou je možnost online zálohy a grafické rozhraní pro jazyky PHP, Python, Perl a Ruby. Na druhou stranu manuál existuje pouze v angličtině nebo korejštině.
-                
-                \item Firebird\footnote{domovská stránka: \url{http://www.firebirdsql.org/en/start/}} – je prvním zástupcem relační databáze. Systém funguje již od roku 1981, který lze použít na Linuxu, Windows a dalších Unixových platformách. Firebird má obsáhlou komunitu uživatelů. V databázi lze využít mnoho vývojářských nástrojů a lze se do ní přihlásit pomocí účtu na microsoftu. Naopak chybí integrace mezi ostatnímy databázovými systémy.
                 
                 \item MariaDB\footnote{domovská stránka: \url{https://mariadb.org/}} – byla vytvořena původnímy vývojáři MySQL. MariaDB využívají dnes největší společnosti jako jsou Google nebo Facebook. Ochrana dat je na špičkové úrovni. Systém působí na trhu přes 20 let. Jako nevýhoda se dá počítat chybějící rozhraní pro mezipamět.
                 
-                \item MongoDB\footnote{domovská stránka: \url{https://www.mongodb.com/}} – byla vytvořena v roce 2007 jako řešení pro větší projekty. Díky svým sponzorům a podporovatelům si tato databáze uchovává myšlenku být jednoduchá a efektivní. Dokáže zpracovat poměrně rychle velké množství dat. Po zaznamenání systémové chyby následuje rychlé obnovení dat.
+                \item MongoDB\footnote{domovská stránka: \url{https://www.mongodb.com/}} – byla vytvořena v roce 2007 jako řešení pro větší projekty. Díky svým sponzorům a podporovatelům si tato NoSQL databáze uchovává myšlenku být jednoduchá a efektivní. Dokáže zpracovat poměrně rychle velké množství dat. Po zaznamenání systémové chyby následuje rychlé obnovení dat. V nerelační databázi se poměrně složitě opravuje návrh databáze. Nevýhodou pro MongoDB je, že pracovnící mají zkušenosti s relační databází.
                 
-                \item MySQL\footnote{domovská stránka: \url{https://www.mysql.com/}} – funguje již od roku 1995. Dnes je využívána jako standardní databáze pro menší i větší projekty. Běží na všech známých operačních systémech a funguje i při výpadku internetu. Velkou výhodou je oddělený server od vývojového prostředí. Naopak nevýhodou je delší prodleva mezi novými aktualizacemi.
+                \item MySQL\footnote{domovská stránka: \url{https://www.mysql.com/}} – funguje již od roku 1995. Dnes je využívána jako standardní databáze pro menší i větší projekty. Běží na všech známých operačních systémech a funguje i při výpadku internetu. Velkou výhodou je oddělený server od vývojového prostředí a navíc MySQL používají pracovnící ústavu na svých serverech. Naopak nevýhodou je delší prodleva mezi novými aktualizacemi.
                 
                 \item PostgreSQL\footnote{domovská stránka: \url{https://www.postgresql.org/}} – má za sebou 15 let aktivního vývoje a patří mezi databáze, které běží na všech hlavních operačních systémech. S použitím PostgreSQL může uživatel vytvořit vlastní metody nebo nestandardní datové typy. Mnoho věstavěných procedur lze spouštět pomocí mnoha programovacích jazyků, jako je Java, Perl, Python nebo C/C++. Vývoj je řízen pouze komunitou.
                 
-                \item SQLite\footnote{domovská stránka: \url{https://www.sqlite.org/index.html}} – se podle \cite{database} považuje za nejrozvinutější databázi na světě. Vývoj začal v roce 2000 a použivali jej významné firmy jako je Facebook, Apple nebo Microsoft. Po každé aktualizaci, vývojáří zveřejní podrobný výpis změn. K dispozivi je kvalitní podpora a knihovna, která na úkor velikosti paměti pracuje velmi rychle. SQLite se nedoporučuje pro obsáhlé webové aplikace a velké množství dat. 
+                \item SQLite\footnote{domovská stránka: \url{https://www.sqlite.org/index.html}} – se podle \cite{database} považuje za nejpoužívanější databázi na světě. Vývoj začal v roce 2000 a použivají jej významné firmy jako je Facebook, Apple nebo Microsoft. Po každé aktualizaci, vývojáří zveřejní podrobný výpis změn. K dispozici je kvalitní podpora a knihovna, která na úkor velikosti paměti pracuje velmi rychle. SQLite se nedoporučuje pro obsáhlé webové aplikace a velké množství dat. 
                 
         \end{itemize}
         
-        Výsledná aplikace bude obsahovat méně než 10 tabulek. Aplikace využije jednoduché dotazy a pro chod aplikace nebude potřeba posílání několika dotazů současně. Do budoucna se počítá s rozšířením aplikace, proto je výhodou, když je databáze urdžována a aktualizována. Na základě analýzy a protože tento projekt bude patřit spíše k těm menším, byla vybrána databáze SQLite.
+        Výsledná aplikace bude obsahovat méně než 10 tabulek. Aplikace využije jednoduché dotazy a pro chod aplikace nebude potřeba posílání několika dotazů současně. Do budoucna se počítá s rozšířením aplikace, proto je výhodou, když je databáze urdžována a aktualizována. Na základě analýzy, a protože tento projekt bude patřit spíše k těm menším, byla vybrána databáze SQLite.
         
         \subsection{Elektronický formát}
             \uv{\textit{Mezi formáty, v nichž můžeme číst elektronickou literaturu, jsou jednak ty, které byly pro tento účel přímo vytvořené, ale také ty, v nichž se e-knihy publikovaly prostě proto, že nebylo mnoho jiných alternativ. Toto se týká zejména stavu v 90. letech, kdy vznikaly kopie (převážně papírových) knih převedené do formátů jako jsou TXT, HTML či RTF.}}\cite{electronic-format}
             
             Elektronickému formátu je třeba věnovat zvláštní pozornost, protože se do buducna počítá s rozšířením aplikace o část, která se bude věnovat zobrazením těchto děl pro veřejnost.
             
-            Seznam vybraných formátů pro e-knihy uvedené v \cite{electronic-format}
+            Seznam vybraných formátů pro e-knihy uvedené v \cite{electronic-format}.
             
             \begin{itemize}
                 \item Archos Diffusion – je formát vytvořen franouzskou firmou  ArchosDiffusion. Koncovka názvů souborů je .aeh. Formát byl vytvořen pro uchovávání literatury v elektronické podobě a patří do skupiny formátů založených na XML. Otevírat soubory lze v programu Archos Player nebo ve volně dostupné aplikaci Visual Vision EbooksReader. Postupem času uvadá zájem o tento formát.
@@ -189,7 +180,7 @@
                 
                 \item Portable Document Format (PDF) – vyvinutý společností Adobe v roce 1993 byl primárně určen pro uchování souborů pro tisk. Patří mezi formáty, které nebyly vytvořeny pro elektronickou literaturu, ale narozdíl od ostatních, se tak používá dodnes. Velkou předností je nezávislost na platformě, protože s PDF lze pracovat téměř na všech operačních systémech. 
                 
-                \item Plain text – patří mezí formáty, které nebyly určeny pro uchovávání e-knih. V 90. letech se používal pro zobrazení elektronické literatury, protože nebylo tolik jiných možností. Díky malé datové velikosti souborů a možnosti čtení souborů neomezeně na platformě se stále používá. TXT nedovoluje formátování a nepodporuje vložení obrázků, videí či zvukových stop.
+                \item Plain text (TXT) – patří mezí formáty, které nebyly určeny pro uchovávání e-knih. V 90. letech se používal pro zobrazení elektronické literatury, protože nebylo tolik jiných možností. Díky malé datové velikosti souborů a možnosti čtení souborů neomezeně na platformě se stále používá. TXT nedovoluje formátování a nepodporuje vložení obrázků, videí či zvukových stop.
                 
                 \item Text Encoding Initiative (TEI) – byl vytvořen TEI konsorciem primárně pro elektronickou literaturu. Formát je využíván ve výukových projektech i knihovnách po celém světě. Řadí se do skupiny formátů, které jsou založeny na XML. TEI se označuje jako nastavitelný, protože uživatel může podle své vůle přidat, předefinovat nebo přejmenovat tagy a jejich atributy. Formát se dá použít pro různé druhy textů.
             \end{itemize}
@@ -197,17 +188,17 @@
             Drtivá většina děl dostupná pracovníkům UČL AV je právě ve formátu XML. Avšak tento formát není primárně určen pro uchovávání elektronických verzí literárních děl, proto byl pro mou práci po diskuzi s pracovníky UČL AV vybrán textový formát TEI.
     \section{Software}
         \subsection{Microframework vs framework}
-            V následujícím textu vycházím z \cite{microframework-vs-framework}
+            V následujícím textu vycházím z \cite{microframework-vs-framework}.
             
             Framework poskytuje skoro vše, co programátor potřebuje, od obsluhy webových požadavků po komunikaci s databází. Obsahuje i komponenty, které vývojář nemusí nikdy použít, nicméně z hlediska rozšířitelnosti jsou výhodné.
             
-            Microframework je označením pro framework, který obsahuje pouze nejnutnější komponenty k vývoji webové aplikace. Microframeworky bývají přizpůsobeny menším aplikacím nebo aplikacím s konkrétním účelem. Pro rozšíření funkčnosti je potřeba přidat dané komponenty.
+            Microframework je označením pro framework, který obsahuje pouze nejnutnější komponenty k vývoji webové aplikace. Microframeworky bývají přizpůsobeny menším aplikacím nebo aplikacím s velmi konkrétním účelem. Pro rozšíření funkčnosti je potřeba přidat dané komponenty.
             
-            Reálně je microframework sbírka nejnutnějších potřebných komponent pro potřebu webových aplikací. Obsluha microframeworku dostane HTTP požadavek, který zpracuje daný kontroler a jen pošle odpověď obvykle ve formátu HTML zpět. Některé microframeworky obsahují další nástroje pro manipulaci s HTTP požadavky. Mnoho vývojářů používá raději velké frameworky, jako jsou Laravel nebo Symfony. Tyto frameworky disponují spoustou již vyřešených problému a mají velikou programátorskou základnu. Nicméně potřebují více času pro pochopení a porozumění prostředí. 
+            Reálně je microframework sbírka nejnutnějších potřebných komponent pro potřebu webových aplikací, obvykle výtvory na základě architektury MVC. Obsluha microframeworku dostane HTTP požadavek, který zpracuje daný kontroler a ten pošle odpověď obvykle ve formátu HTML zpět. Některé microframeworky obsahují další nástroje pro manipulaci s HTTP požadavky. Mnoho vývojářů používá raději velké frameworky, jako jsou Laravel nebo Symfony. Tyto frameworky disponují mnoha již vyřešenými problémy a mají velikou programátorskou základnu. Tyto frameworky potřebují ale více času pro pochopení a porozumění prostředí. 
             
-            Jsou projekty, u kterých se vyplatí použít velké frameworky, ale v případě projektů, kde není potřeba tolik funkcí, je vhodné použít microframework. Tento projekt se charakterizuje spíše menší náročností a nebude obsahovat složité požadavky. Aplikace nebude mít mnoho stránek a proto ideláním řešením bude microframework.
+            Jsou projekty, u kterých se vyplatí použít frameworky, například velké e-shopy. V případě projektů, kde není potřeba tolik funkcí a nevyužila by se na plno síla frameworků, je vhodné použít microframework. Tento projekt je spíše menší a nebude obsahovat složité požadavky. Aplikace nebude mít mnoho stránek a proto ideláním řešením bude microframework.
             
-            5 nejlepších microframeworků podle \cite{microframeworks}:
+            Pět nejlepších microframeworků podle \cite{microframeworks}.
             
             \begin{itemize}
                 \item Slim\footnote{domovská stránka: \url{https://www.slimframework.com/}} – je považován za jeden z nejlepších PHP microframeworků. Umožnuje snadno vytvořit kvalitní webovou aplikaci. Díky nastavitelné a modulární architektuře poskytuje vývojářům přesně to, co potřebují. Slim dovoluje vkládat závislosti, proto jej lze použít společně s externími nástroji.
@@ -216,7 +207,7 @@
                 
                 \item Wave\footnote{domovská stránka: \url{https://www.waveframework.com/}} – používá architekturu MVC. Neobsahuje doplňkové knihovny a klade důraz na rychlost a optimalizaci. Wave podporuje Apache i Nginx servery.
                 
-                \item Limonade\footnote{domovská stránka: \url{https://limonade-php.github.io/}} – se zaměřuje obdobně jako Wave na jednoduchost. Limonade je velmi rychlý a snadný ve vývoji aplikací. Nicméně je až extrémně malý a nelze jej rozšířit o složitější funkčnost. Spoléhá pouze na globální funkce.
+                \item Limonade\footnote{domovská stránka: \url{https://limonade-php.github.io/}} – se zaměřuje obdobně jako Wave na jednoduchost. Limonade je velmi rychlý a snadně se v něm vývíjí aplikace. Nicméně je až extrémně malý a nelze jej rozšířit o složitější funkčnost. Spoléhá pouze na globální funkce.
                 
                 \item Lumen\footnote{domovská stránka: \url{https://lumen.laravel.com/}} – je microframework odvozený z asi nejrozšířenějšího PHP frameworku Laravel. Pokud si programátor není jistý velikostí svého projektu, je výhodné použít Lumen, protože stačí veškerý kód z Lumenu převést do Laravelu a vše bude fungovat jak má.
             \end{itemize}
