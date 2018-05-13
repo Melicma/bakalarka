@@ -62,7 +62,7 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
 \begin{introduction}
 	%sem napište úvod Vaší práce
 
-    Elektronická literární díla stále rozšiřují pole své působnosti, ať už mluvíme o~nakupování nebo zobrazování knih na počítači či o~jejich snadném čtení v~e-čtečkách. V~Austrálii se rozdíl prodeje elektronických knížek v~roce 2008 oproti roku 2009 rapidně zvýšil, a to o~více než 100 \%. Ve Spojených státech amerických se v~lednu roku 2012 zvýšil prodej e-knih pro dospělé o~49,4 \% a e-knih pro děti a mládež o~475,1 \%, ve srovnáním s~lednem 2011 \cite{info}. Z~prudkého nárůstu prodejů e-knih můžeme usoudit, že rapidně roste oblíbenost elektronických děl. Zobrazení a následné čtení e-knih na našich elektronických zařízení je pro mnohé nejenom snazší, ale i pohodlnější oproti zapůjčování či koupi papírových knih.
+    Elektronická literární díla stále rozšiřují pole své působnosti, ať už mluvíme o~nakupování nebo zobrazování knih na počítači či o~jejich snadném čtení v~e-čtečkách. V~Austrálii se rozdíl prodeje elektronických knížek v~roce 2008 oproti roku 2009 rapidně zvýšil, a to o~více než 100 \%. Ve Spojených státech amerických se v~lednu roku 2012 zvýšil prodej e-knih pro dospělé o~49,4 \% a\\ e-knih pro děti a mládež o~475,1 \% ve srovnáním s~lednem 2011 \cite{info}. Z~prudkého nárůstu prodejů e-knih můžeme usoudit, že rapidně roste oblíbenost elektronických děl. Zobrazení a následné čtení e-knih na našich elektronických zařízeních je pro mnohé nejenom snazší, ale i pohodlnější oproti zapůjčování či koupi papírových knih.
 
 	Výsledek této práce je přednostně určen pro zaměstnance Ústavu české literatury Akademie věd České republiky (UČL AV). Pracovníci ústavu získávají, ať formou darů či koupí, postupně více a více literárních děl. Tato díla následně naskenují a převedou do elektronické podoby. Nicméně často to bývají historická díla, a proto se stává, že výsledek přesně neodpovídá tištěné podobě knihy. Proto je nezbytné, aby pracovníci ústavu ručně opravovali chyby a měli možnost doplňovat chybějící části v~elektronické podobě díla. Zde přichází na řadu aplikace, která bude umožňovat rychlejší a efektivnější úpravu elektronické podoby díla.
 
@@ -74,9 +74,9 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
         
     \section{Ukázka současného stavu}
 
-        V~současnosti mají pracovníci UČL AV okolo 1700 literárních děl uložených v~databázi ve formátu XML. Díla jsou rozdělena do dvou částí, jak je vidět na příkladu díla \uv{Vytržené listy} na obrázku \ref{fig:xml}. První část je identifikována tagem hlavička a druhá tagem text. Hlavička obsahuje metadata jako je titul díla nebo rok vydání a ve druhé části je samotný text rozčleněn například do tagů sbírka a báseň.
+        V~současnosti mají pracovníci UČL AV okolo 1700 literárních děl uložených v~databázi ve formátu XML. Díla jsou rozdělena do dvou částí, jak je vidět na příkladu díla \uv{Vytržené listy} na obrázku \ref{fig:xml}. První část je identifikována tagem hlavička a druhá tagem text. Hlavička obsahuje metadata, jako je titul díla nebo rok vydání, a ve druhé části je samotný text rozčleněn například do tagů sbírka a báseň.
         
-        K~některým dílům mají pracovnící k~dipozici jejich oskenované stránky. Tyto skeny jsou uložené ve formátu JPG a slouží výhradně ke kontrole převodu elektronické podoby. Na obrázku \ref{fig:scan} je vidět srovnání skenu a xml kódu díla \uv{Cikánčina smrt} strana 9. Stránka je podrobně rozdělena do nestandardních tagů strofa a v.
+        K~některým dílům mají pracovníci k~dipozici jejich oskenované stránky. Tyto skeny jsou uložené ve formátu JPG a slouží výhradně ke kontrole převodu elektronické podoby. Na obrázku \ref{fig:scan} je vidět srovnání skenu a xml kódu díla \uv{Cikánčina smrt} strana 9. Stránka je podrobně rozdělena do nestandardních tagů strofa a v.
         
 \end{introduction}
 
@@ -95,9 +95,9 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
     
 	Cílem práce bylo vytvoření systému pro správu a snadné vytváření elektronických verzí literárních děl včetně otestování a řádné dokumentace. Vytvořená aplikace dovoluje snadné vložení elektronické verze díla a následnou úpravu díla. V~aplikaci je k~dispozi správa příloh k~jednotlivým dílům. Tyto přílohy jsou naskenovaná původní díla a lze je do aplikace přidat pomocí hromadného uploadu. Instalační příručka je v~příloze \ref{fig:install} nebo v~souboru \textit{README.md}.
 	
-	Součástí vývoje je import dat, která mají pracovnící k~dipozici. Jedná se o~1700 sbírek básní ve formátu XML. Import byl ztížený nesourodými daty v~databázi. Díla měla různé tagy s~ruznými atributy, nicméně data se sjednotila a úspěšně importovala do nové databáze. V~přílohách, které bylo nutno taky sjednotit, byly taktéž nesrovnalosti. V~souboru, ve kterém byly identifikátory jednotlivých obrázků, se tyto poznámky prezentovaly ruzným způsobem. Nejpre se muselo sjednotit podobu a poté se mohl provést import do nové databáze. Nakonec proběhl převod úspěšně.
+	Součástí vývoje je import dat, která mají pracovníci k~dipozici. Jedná se o~1700 sbírek básní ve formátu XML. Import byl ztížený nesourodými daty v~databázi. Díla měla různé tagy s~různými atributy, nicméně data se sjednotila a úspěšně importovala do nové databáze. V~přílohách, které bylo nutno taky sjednotit, byly taktéž nesrovnalosti. V~souboru, ve kterém byly identifikátory jednotlivých obrázků, se tyto poznámky prezentovaly různým způsobem. Nejprve se muselo sjednotit podobu a poté se mohl provést import do nové databáze. Nakonec proběhl převod úspěšně.
 	
-	Aplikace je vyvinuta na míru pro UČL AV a proto byly všechny požadavky podrobně probírány se zaměstnancemi ústavu. Problém nastával po opakované změně požadavků v~průběhu implementace. Nicméně podařilo se vyhovět všem počátečním požadavkům a po krátkých rozpravách i těm změněným. Situace je taková, že pracovníci UČL AV se rozhodli zatím nechat tagy původní, neb si sami musí ujasnit, co by bylo pro ně nejlepší.
+	Aplikace je vyvinuta na míru pro UČL AV, a proto byly všechny požadavky podrobně probírány se zaměstnanci ústavu. Problém nastával po opakované změně požadavků v~průběhu implementace. Nicméně podařilo se vyhovět všem počátečním požadavkům a po krátkých rozpravách i těm změněným. Situace je taková, že pracovníci UČL AV se rozhodli zatím nechat tagy původní, neb si sami musí ujasnit, co by bylo pro ně nejlepší.
 	
 	Cíl práce se podařilo úspěšně splnit a výsledná aplikace by měla být v~brzké době nasazena do praxe.
 
@@ -293,7 +293,6 @@ Cílem této bakalářské práce je ulehčit převod literárních děl do elek
 \begin{figure}
 	\dirtree{%
 		.1 readme.txt\DTcomment{stručný popis obsahu CD}.
-		.1 exe\DTcomment{adresář se spustitelnou formou implementace}.
 		.1 src.
 		.2 impl\DTcomment{zdrojové kódy implementace}.
 		.2 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.

@@ -1,5 +1,5 @@
 \chapter{Implementace}
-    Při vytváření kódu bylo nutné dodržovat domluvené návrhy. Kód musel být přehledný pro případné rozšířění aplikace jiným vývojářem. Díky vybranému softwaru a jeho přívětivé příručce byla poměrně rychle vytvořena aplikace v~základní podobě. Slim má obrovskou komunitu uživatelů, což je velice nápomocné při hledání řešení problémů. 
+    Při vytváření kódu bylo nutné dodržovat domluvené návrhy. Kód musel být přehledný pro případné rozšíření aplikace jiným vývojářem. Díky vybranému softwaru a jeho přívětivé příručce byla poměrně rychle vytvořena aplikace v~základní podobě. Slim má obrovskou komunitu uživatelů, což je velice nápomocné při hledání řešení problémů. 
 
     \section{Import}
         Ještě před implementací se musely do databáze aplikace zpracovat sbírky z~UČL AV. Podle očekávání byla data dodána ve formátu XML. Import nedoprovázely žádné komplikace zejména díky snadné ovladatelnosti a standardním knihovnám scriptovacího jazyka Python\footnote{domovská stránka: \url{https://www.python.org//}}. Současně s~importem sbírek proběhlo zpracování příloh k~nim přidružených.
@@ -49,7 +49,7 @@ def doAuthors(authors, recursion):
     pages = ''.join(meta.find('stran').itertext())
             \end{lstlisting}
             
-            Záznamů do tabulky \textit{author\_work} byly vloženy pomocí funkce \textit{doConnection}. Tato funkce má parametry \textit{workId}, \textit{indexId} a \textit{typeOfConn}. První je id vytvořeného díla a \textit{indexId} je pole id autorů nebo vydavatelů, které může obsahovat jeden prvek. \textit{TypeOfConn} je typ propojení, kterým je buď \uv{author} nebo \uv{publisher}. Obsah funkce je pouze databázový dotaz typu insert.
+            Záznamů do tabulky \textit{author\_work} byly vloženy pomocí funkce \textit{doConnection}. Tato funkce má parametry \textit{workId}, \textit{indexId} a \textit{typeOfConn}. První je id vytvořeného díla a \textit{indexId} je pole id autorů nebo vydavatelů, které může obsahovat jeden prvek. \textit{TypeOfConn} je typ propojení, kterým je buď \uv{author}, nebo \uv{publisher}. Obsah funkce je pouze databázový dotaz typu insert.
             
         \subsection{Přílohy}
             Zaměstnanci UČL AV dodali společně s~některými díly i jejich naskenované stránky. Adresář \textit{scan} obsahoval  podadresáře, kde byly hlavní obrázky a zmenšené obrázky. Jednotlivá díla jsou nazvána číslem například \uv{0001.xml}. Tato čísla byla zároveň jménem adresáře obsahující obrázky. Podle čísla se zjistilo, ke kterému dílu obrázky patří. V~číselných podadresářích byly uloženy obrázky ve formátu jpg a u~hlavních obrázků byl soubor \textit{pages.csv}, ve kterém byly informace o~jednotlivých stránkách. Přílohy byly uloženy s~číselným názvem. Příklad záznamu v~souboru pages: \uv{002.jpg;Strana [1]}. Tuto informaci bylo nutné zpracovat a vložit do tabulky jako poznámku k~příloze. 
@@ -88,7 +88,7 @@ def doAttachments(workID, oldID):
             
     \section{Aplikace}
     
-        Aplikace se vyvíjela podle domluvených návrhů s~úpravami, které byly dohodnuty s~pracovníky UČL AV. V~průběhu vývoje pracovnící ústavu změnili některá svá rozhodnutí, například u~hromadného nahrávání příloh již neměla být možnost upravovat pořadí obrázků. Do termínu odevzdání této práce se také nevyjasnila sada tagů použitých pro formátování textu.
+        Aplikace se vyvíjela podle domluvených návrhů s~úpravami, které byly dohodnuty s~pracovníky UČL AV. V~průběhu vývoje pracovníci ústavu změnili některá svá rozhodnutí, například u~hromadného nahrávání příloh již neměla být možnost upravovat pořadí obrázků. Do termínu odevzdání této práce se také nevyjasnila sada tagů použitých pro formátování textu.
         \subsection{Kostra aplikace}
             Vývojáři Slimu dávají k~dispozici počáteční aplikaci\footnote{Slim-Skeleton: \url{https://github.com/slimphp/Slim-Skeleton}} jako výchozí stav pro vývoj. Po naklonování repozitáře a spuštění composeru podle návodu skeletonu lze spustit testovací server pomocí PHP příkazem:
             \begin{lstlisting}
@@ -102,7 +102,7 @@ def doAttachments(workID, oldID):
             
             V~adresáři \textit{public} jsou skripty, soubory pro stylování a přílohy k~dílům. Podadresáře \textit{js} jsou pro skripty, \textit{css} obsahuje styly a \textit{images} slouží pro naskenované obrázky, které patří k~jednotilvým dílům. Dále je zde soubor \textit{index.php}, ve kterém se spouští samotná aplikace.
             
-            Ve složce \textit{src} jsou soubory nezbytné pro fungování Slim aplikace. Soubor \textit{dependencies.php} je určen pro vložení závislostí na externích knihovnách. Slim použivá DIC (Dependency Injection Container) systém pro uchovávání těchto závislotí. Úkolem systému je nahrát závislost, uložit a poskytnou ji programátorovi kdykoliv to bude potřebovat. V~této aplikaci byla použita databáze SQLite, pro připojení závislosti byl přidán následující kód do \textbf{dependencies.php}:
+            Ve složce \textit{src} jsou soubory nezbytné pro fungování Slim aplikace. Soubor \textit{dependencies.php} je určen pro vložení závislostí na externích knihovnách. Slim použivá DIC (Dependency Injection Container) systém pro uchovávání těchto závislotí. Úkolem systému je nahrát závislost, uložit a poskytnout ji programátorovi kdykoliv to bude potřebovat. V~této aplikaci byla použita databáze SQLite, pro připojení závislosti byl přidán následující kód do \textit{dependencies.php}:
             \begin{minted}[frame=single, autogobble=true, label=Přidání databáze]{php}
 <?php
     $container['db'] = function ($c) {
@@ -138,7 +138,7 @@ def doAttachments(workID, oldID):
             {% block content %}{% endblock %}
             \end{lstlisting}
              
-             Adresář \textit{tests} obsahuje soubory pro automatické testování aplikace. Ve skeletonu jsou připraveny soubory pro jednotkové testování. Obsahují předvyplněné základní testy, nicméně pro testováná této aplikace musely být přizpůsobeny konfiguraci aplikace.
+             Adresář \textit{tests} obsahuje soubory pro automatické testování aplikace. Ve skeletonu jsou připraveny soubory pro jednotkové testování. Obsahují předvyplněné základní testy, nicméně pro testování této aplikace musely být přizpůsobeny konfiguraci aplikace.
              
         \subsection{Login}
             Na stránce \textit{login} byl podle návrhu naimplementován jednoduchý přihlašovací formulář pro email a heslo. Pokud je email nebo heslo špatně zadané, zobrazí se uživateli formulář se zprávou o~nesprávně zadaném obsahu. Po úspěšném přihlášení se stránka přesměruje na seznam děl \textit{content}.
@@ -146,7 +146,7 @@ def doAttachments(workID, oldID):
         \subsection{Seznam děl}
             U~seznamu děl a všech dalších stránek je narozdíl od návrhu horní část stránky vyhrazena pro navigační lištu aplikace. Do této části jsou vlevo vložené odkazy na ostatní stránky a vpravo možnosti přihlášeného uživatele. Tato lišta je implementována pomocí Bootstrap komponenty \textit{navbar}. 
             
-            Drobné úpravy oproti návrhu jsou vidět i ve filtru děl. Pro větší přehlednost byly jednotlivé složky filtru rozděleny po řádcích. Výběr autorů zajištuje externí knihovna Selectivity\footnote{domovská stránka: \url{https://arendjr.github.io/selectivity/}}. Tato knihovna obsahuje několik možností výběru prvků, ve filtru byl použit vícenásobný výběr společně s~možností prázdného výběru. Ostatní prvky filtru patří ke klasickým Bootstrap elementům. Dropdown prvky pro výběr roku vydání, textová pole pro fulltextové vyhledávání a checkboxy, které značí jaký typ díla má být zobrazen.
+            Drobné úpravy oproti návrhu jsou vidět i ve filtru děl. Pro větší přehlednost byly jednotlivé složky filtru rozděleny po řádcích. Výběr autorů zajištuje externí knihovna Selectivity\footnote{domovská stránka: \url{https://arendjr.github.io/selectivity/}}. Tato knihovna obsahuje několik možností výběru prvků, ve filtru byl použit vícenásobný výběr společně s~možností prázdného výběru. Ostatní prvky filtru patří ke klasickým Bootstrap elementům. Dropdown prvky pro výběr roku vydání, textová pole pro fulltextové vyhledávání a checkboxy, které značí, jaký typ díla má být zobrazen.
             
             Tabulka literárních děl se shoduje s~návrhem a je implementována pomocí knihovny DataTables\footnote{domovská stránka: \url{https://datatables.net/}}. Mezi využité  výhody této knihovny patří vestavěné stránkování, okamžité vyhledávání v~datech a možnost vicenásobného řazení podle zvoleného sloupce.
             
@@ -154,7 +154,7 @@ def doAttachments(workID, oldID):
             Pro zobrazení seznamu autorů a vydavatelů byla použita stejně jako u~seznamu děl knihovna DataTable. Vzhledem k~návrhu přibyl v~tabulce sloupec s~počtem výskytu daného záznamu u~díla. Možnost přidat nového autora nebo vydavatele zde chyběla, proto byla doplněna formou odkazu na příslušnou stránku.
         
         \subsection{Metadata}
-            Stránka \textit{metadata} dovoluje uživateli spravovat údaje o~dílu, které přímo nesouvisí s~obsahem samotné knihy. K~implementaci byli navíc oproti návrhu přidaní vedle autorů vydavatelé. Obě skupiny lze přidávat a odebírat pomocí knihovny Selectivity a mohou obsahovat jeden i více záznamů.
+            Stránka \textit{metadata} dovoluje uživateli spravovat údaje o~dílu, které přímo nesouvisí s~obsahem samotné knihy. K~implementaci byli navíc oproti návrhu přidaní vedle autorů i vydavatelé. Obě skupiny lze přidávat a odebírat pomocí knihovny Selectivity a mohou obsahovat jeden i více záznamů.
             
             Metadata lze upravovat pomocí jednoduchých Bootstrap textových inputů nebo textarea formulářových polí.
             
@@ -178,7 +178,7 @@ def doAttachments(workID, oldID):
         \subsection{Přílohy}
             Při vytváření stránky přílohy docházelo ke změnám názoru ústavu a musely se opakovaně přepisovat funkce. Nicméně změny nebyly rozsáhlé. Podle návrhu byla implementována možnost hromadného uploadu skenů pomocí Bootstrap custom file input tagu. Smazání všech příloh se provede po potvrzení akce.
             
-            Nahrané přílohy se nejprve seřadí abecedně podle jména a poté se uloží na server do patřičného adresáře. Název adresáře je id díla, pokud id není pětimístné jsou k~němu zleva přidány nuly. Jméno přílohy se určuje počtem již nahraných obrázků k~dílu a pokud počet není třímístný přidají se ke jménu zleva nuly. Automaticky se také vytvoří miniatury obrázků pro zobrazení na stránce, kterým se přidá přípona \_small.
+            Nahrané přílohy se nejprve seřadí abecedně podle jména a poté se uloží na server do patřičného adresáře. Název adresáře je id díla, pokud id není pětimístné, jsou k~němu zleva přidány nuly. Jméno přílohy se určuje počtem již nahraných obrázků k~dílu a pokud počet není třímístný, přidají se ke jménu zleva nuly. Automaticky se také vytvoří miniatury obrázků pro zobrazení na stránce, kterým se přidá přípona \_small.
             
             Příklad vytvoření jména adresáře příloh díla:
             \pagebreak
@@ -195,10 +195,10 @@ def doAttachments(workID, oldID):
         \subsection{Text}
             Změna textu je nejdůležítější částí aplikace. Zde se upravuje nebo vytváří elektronické verze literárních děl. Uživatel zde může mazat části díla, přidávat text nebo opravovat chyby z~naskenování.
             
-            Změna textu se téměř shoduje s~jejím návrhem. V~horní části je menu, a spodní část se věnuje obsahu díla. Stránka je rozdělena do dvou částí: vlevo textové pole pro editaci elektronické verze a vpravo jsou možnosti přidání speciálních tagů. Oproti návrhu, přibyla možnost výběru statusu, ve kterém se dílo nachází.
+            Změna textu se téměř shoduje s~jejím návrhem. V~horní části je menu a spodní část se věnuje obsahu díla. Stránka je rozdělena do dvou částí: vlevo textové pole pro editaci elektronické verze a vpravo jsou možnosti přidání speciálních tagů. Oproti návrhu přibyla možnost výběru statusu, ve kterém se dílo nachází.
             
             V~možnostech v~pravé části stránky je vložení určitého tagu na předem označenou pozici. Pomocí Javascriptu se zjistí uživatelem označený text v~dílu. Poté se tag vloží před text a za něj se vloží tag uzavírací. Pro vložení jiného tagu se jednoduše přidá další akce, ve které se zavolá Javascriptová funkce s~parametrem názvu tagu. Díky této funkčnosti je aplikace prakticky nezávislá na zvoleném formátu elektronických verzí děl.
             
             Snadnější přehled v~elektronické podobě díla zajišťuje knihovna highlight.js\footnote{domovská stránka: \url{https://highlightjs.org/}}. Tato knihovna od sebe odděluje tagy, atributy a samotný text díla pomocí zvýraznění. Uživatel poté dokáže snadno oddělit prvky od sebe a může se soustředit pouze na svou práci.
             
-            Úprava textu probíhá buď psaním ručně do editoru nebo vkládáním tagů pomocí označení textu. Problém nastává při zobrazení velmi obsáhlého díla. Úprava textu se zpomalí, což může uživatelovi ztížit práci.
+            Úprava textu probíhá buď psaním ručně do editoru, nebo vkládáním tagů pomocí označení textu. Problém nastává při zobrazení velmi obsáhlého díla. Úprava textu se zpomalí, což může uživateli ztížit práci.
