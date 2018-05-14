@@ -193,12 +193,12 @@ def doAttachments(workID, oldID):
             \end{minted}
             
         \subsection{Text}
-            Změna textu je nejdůležítější částí aplikace. Zde se upravuje nebo vytváří elektronické verze literárních děl. Uživatel zde může mazat části díla, přidávat text nebo opravovat chyby z~naskenování.
+            Editace literárního díla je nejdůležítější částí aplikace. Zde se upravuje nebo vytváří elektronické verze literárních děl. Uživatel zde může mazat části díla, přidávat text nebo opravovat chyby z~naskenování.
             
-            Změna textu se téměř shoduje s~jejím návrhem. V~horní části je menu a spodní část se věnuje obsahu díla. Stránka je rozdělena do dvou částí: vlevo textové pole pro editaci elektronické verze a vpravo jsou možnosti přidání speciálních tagů. Oproti návrhu přibyla možnost výběru statusu, ve kterém se dílo nachází.
+            Formulář pro editaci textu se téměř shoduje s~jeho návrhem. Příslušná stránka je rozdělena do dvou částí: vlevo textové pole pro editaci elektronické verze a vpravo jsou možnosti přidání speciálních tagů. Oproti návrhu přibyla možnost změnit status, ve kterém se dílo nachází.
             
             V~možnostech v~pravé části stránky je vložení určitého tagu na předem označenou pozici. Pomocí Javascriptu se zjistí uživatelem označený text v~dílu. Poté se tag vloží před text a za něj se vloží tag uzavírací. Pro vložení jiného tagu se jednoduše přidá další akce, ve které se zavolá Javascriptová funkce s~parametrem názvu tagu. Díky této funkčnosti je aplikace prakticky nezávislá na zvoleném formátu elektronických verzí děl.
             
             Snadnější přehled v~elektronické podobě díla zajišťuje knihovna highlight.js\footnote{domovská stránka: \url{https://highlightjs.org/}}. Tato knihovna od sebe odděluje tagy, atributy a samotný text díla pomocí zvýraznění. Uživatel poté dokáže snadno oddělit prvky od sebe a může se soustředit pouze na svou práci.
             
-            Úprava textu probíhá buď psaním ručně do editoru, nebo vkládáním tagů pomocí označení textu. Problém nastává při zobrazení velmi obsáhlého díla. Úprava textu se zpomalí, což může uživateli ztížit práci.
+            Úprava textu probíhá buď psaním ručně do editoru, nebo vkládáním tagů pomocí označení textu. Pracovníci ústavu požadovali, aby dílo bylo zobrazené na stránce celé. Po implementaci nastal problém při zobrazení velmi obsáhlého díla. Úprava textu se zpomalí, což uživateli ztěžuje práci. V současné době nejsou zaměstnanci UČL AV spokojeni s touto sekcí. Z~důvodu nedostatku času před termínem odevzdání práce nezbýval prostor pro zrychlení úpravy textu.

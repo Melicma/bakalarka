@@ -42,13 +42,13 @@
 \supervisor{Ing. Karel Klouda, Ph.D.}
 \acknowledgements{V~prvé řadě bych rád poděkoval panu Ing. Karlu Kloudovi, Ph.D. za pomoc, trpělivost a odborné rady v~průběhu psaní této bakalářské práce a za možnost podílet se na reálném projektu, který se bude pravděpodobně v~praxi používat. Dále bych chtěl poděkovat své přítelkyni a rodině za trpělivost a podporu v~průběhu studia na ČVUT. }
 \abstractCS{
-V této práci je popsán vývoj aplikace pro převod literárních děl do elektronické podoby. Literární rešerše se zabývá porovnáváním technologií pro vývoj webových aplikací a porovnáváním textových formátů pro uchovávání elektronických děl. Dále jsou popsána potřebná vstupní data a způsob jejich importu. Praktická část navazuje na vyhodnocení rešerše a popisuje průběh vývoje aplikace. Hlavním přínosem této práce je ulehčení převodu literárních děl do elektronické podoby zaměstnancům UČL AV ČR.
+V této práci je popsán vývoj aplikace pro převod literárních děl do elektronické podoby. Literární rešerše se zabývá porovnáváním technologií pro vývoj webových aplikací a porovnáváním textových formátů pro uchovávání elektronických děl. Dále jsou popsána zadaná vstupní data a způsob jejich importu. Praktická část navazuje na vyhodnocení rešerše a popisuje průběh vývoje aplikace. Hlavním přínosem této práce je ulehčení převodu literárních děl do elektronické podoby zaměstnancům UČL AV ČR.
 }
-\abstractEN{The aim of this thesis is to facilitate the conversion of literary works into electronic form.}
+\abstractEN{In this thesis the development of an application for the conversion of literary works into electronic form is described. Literary research focuses on comparing of technologies for web application development and comparing text formats for maintaining of electronic works. Furthermore, the assigned input data and the way of their import are described. The practical part follows the evaluation of research and describes the process of the application development. The primary contribution of this thesis is to facilitate the conversion of literary works into electronic form for the UČL AV ČR employees}
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{4} %volba Prohlášení (číslo 1-6)
 \keywordsCS{webová aplikace, redakční systém, návrh a implementace, správa eletronických literárních děl, Slim, PHP}
-\keywordsEN{web application, management system, design and implementation, digitalized literary works, Slim, PHP}
+\keywordsEN{web application, management system, design and implementation, digitised literary works management, Slim, PHP}
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
@@ -87,18 +87,26 @@ V této práci je popsán vývoj aplikace pro převod literárních děl do elek
 
 \include{sections/testing}
 
-\include{sections/future}
-
-
 \begin{conclusion}
     
-	Cílem práce bylo vytvoření systému pro správu a snadné vytváření elektronických verzí literárních děl včetně otestování a řádné dokumentace. Vytvořená aplikace dovoluje snadné vložení elektronické verze díla a následnou úpravu díla. V~aplikaci je k~dispozi správa příloh k~jednotlivým dílům. Tyto přílohy jsou naskenovaná původní díla a lze je do aplikace přidat pomocí hromadného uploadu. Instalační příručka je v~příloze \ref{fig:install} nebo v~souboru \textit{README.md}.
+	Cílem práce bylo vytvoření systému pro správu a snadné vytváření elektronických verzí literárních děl včetně otestování a řádné dokumentace. Vytvořená aplikace dovoluje snadné vložení elektronické verze díla a následnou úpravu díla. V~aplikaci je k~dispozi správa příloh k~jednotlivým dílům. Tyto přílohy jsou naskenovaná původní díla a lze je do aplikace přidat pomocí hromadného uploadu. Instalační příručka je v~příloze \ref{installApp} nebo v~souboru \textit{README.md}.
 	
-	Součástí vývoje je import dat, která mají pracovníci k~dipozici. Jedná se o~1700 sbírek básní ve formátu XML. Import byl ztížený nesourodými daty v~databázi. Díla měla různé tagy s~různými atributy, nicméně data se sjednotila a úspěšně importovala do nové databáze. V~přílohách, které bylo nutno taky sjednotit, byly taktéž nesrovnalosti. V~souboru, ve kterém byly identifikátory jednotlivých obrázků, se tyto poznámky prezentovaly různým způsobem. Nejprve se muselo sjednotit podobu a poté se mohl provést import do nové databáze. Nakonec proběhl převod úspěšně.
+	Součástí vývoje byl import dat, která mají pracovníci k~dipozici. Jedná se o~1700 sbírek básní ve formátu XML. Import byl ztížený nesourodými daty v~databázi. Díla měla různé tagy s~různými atributy, nicméně data se sjednotila a úspěšně importovala do nové databáze. V~přílohách, které bylo nutno taky sjednotit, byly taktéž nesrovnalosti. V~souboru, ve kterém byly identifikátory jednotlivých obrázků, se tyto poznámky prezentovaly různým způsobem. Nejprve se musela sjednotit podoba a poté se mohl provést import do nové databáze. Nakonec proběhl převod úspěšně.
 	
 	Aplikace je vyvinuta na míru pro UČL AV, a proto byly všechny požadavky podrobně probírány se zaměstnanci ústavu. Problém nastával po opakované změně požadavků v~průběhu implementace. Nicméně podařilo se vyhovět všem počátečním požadavkům a po krátkých rozpravách i těm změněným. Situace je taková, že pracovníci UČL AV se rozhodli zatím nechat tagy původní, neb si sami musí ujasnit, co by bylo pro ně nejlepší.
 	
 	Cíl práce se podařilo úspěšně splnit a výsledná aplikace by měla být v~brzké době nasazena do praxe.
+	
+	\section{Budoucí rozšíření}
+	
+	    \subsection{Responzivita}
+            Výhoda použití knihovny Bootstrap je rychlé a snadné nastavení vzhledu pro zařízení s malou obrazovkou. Požadovaného výsledku je možné dosáhnout použitím specialních tříd pro prvky html. Tyto třídy určují, jak se má prvek zobrazit na menší obrazovce. V~případě rozhodnutí vytvořit responzivní aplikaci ze strany ústavu postačí přidat výše uvedené třídy a základní mobilní vzhled je hotový.
+        
+        
+        \subsection{Zobrazení děl}
+            V~průběhu vývoje pracovníci ústavu navrhli doplnit zadání o~náhled díla. Jednalo by se o~zobrazení díla při jeho úpravě. Byl by to zajímavý prvek aplikace, nicméně tato vlastnost byla diskutována společně s~vedoucím a bylo rozhodnuto z~časových důvodů nezahrnout požadavek do této bakalářské práce.
+        
+            Do budoucna se počítá se zpřístupněním děl široké veřejnosti. Pro tento krok by muselo být implementováno rozhraní, kde se budou elektronická díla zobrazovat tak, jak je zaměstnanci upravili. Buďto by se uživatelé přihlašovali do stejné aplikace jako UČL AV a měli by pomocí uživatelské role odepřeny některé funkce, nebo se vyvine úplně nová aplikace, která by se věnovala čistě zobrazení literárních elektronických děl ze stejné databáze jako tato aplikace. V~součastosti preferuje UČL AV druhý scénář.
 
 \end{conclusion}
 
@@ -156,14 +164,38 @@ V této práci je popsán vývoj aplikace pro převod literárních děl do elek
         \caption {Porovnání skenu a elektronické verze}
         \label {fig:scan}
     \end{figure}
-    
-    \begin {figure}[H]\centering
-        \includegraphics[width=1.2\textwidth]{images/install}
-        \caption {Instalační příručka}
-        \label {fig:install}
-    \end{figure}
 
+\chapter{Instalační příručka} \label{installApp}
 
+    \section{Management system for digitalized literary works}
+        This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+
+        This application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+
+        \subsection{Install the Application}
+            Run this command from the directory in which you want to install your new Slim Framework application.
+            \begin{lstlisting}
+    php composer.phar create-project slim/slim-skeleton 
+    [my-app-name]
+            \end{lstlisting}
+            Replace [my-app-name] with the desired directory name for your new application. You'll want to:
+
+            \begin{itemize}
+                \item Point your virtual host document root to your new application's public/ directory.
+                \item Ensure logs/ is web writeable.
+            \end{itemize}
+            To run the application in development, you can also run this command.
+            \begin{lstlisting}
+    php composer.phar start
+            \end{lstlisting}
+            Run this command to run the test suite
+            \begin{lstlisting}
+    php composer.phar test
+            \end{lstlisting}
+            Run this app with command
+            \begin{lstlisting}
+    php -S localhost:8080 -t public public/index.php
+            \end{lstlisting}
 \chapter{Seznam použitých zkratek}
 % \printglossaries
 \begin{description}
